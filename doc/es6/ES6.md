@@ -1,0 +1,5 @@
+[【ES6第1期】let 和 const 命令](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483924&idx=1&sn=986aacc2e4f8231162eb23b4e53dccac&chksm=ec2a38d3db5db1c552d5c7573b7ad56c45807c8be5a1c9fb385553f931a4feb4d57fdce95cb5#rd)
+[【ES6第2期】块级作用域与do 表达式](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483925&idx=1&sn=4281fa669ef5268521eaa18170c39b52&chksm=ec2a38d2db5db1c49b3fccf9f3dc753958f4dc4e7057c724df24e1537d805ae3c191b5de27c9#rd)
+[【ES6第3期】顶层对象和global 对象](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483926&idx=1&sn=3ddd8b7a2fa109556e95bc1d5e936fa1&chksm=ec2a38d1db5db1c76ca1b65024ede8dc19651ce1f3568273d90c8a2ea35aa5dda87fba8a7dcf#rd)
+[【ES6第4期】数组的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483891&idx=1&sn=08fd2253c0bc736e3b52db88b0fd787c&chksm=ec2a3b34db5db2224487da65f50b67165c67aacfc0f4696fd75613e84fafdfeb6c9af4b4684f#rd)
+[【ES6第5期】对象的解构赋值](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483929&idx=1&sn=883daa63f486abded5ff017cdbb4c00a&chksm=ec2a38dedb5db1c837fe234870391c6d6f46ff45ea8319489df3877a10b2f0c02b9c433d298f#rd)
