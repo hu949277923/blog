@@ -2,11 +2,10 @@
 </div>
 <div class="container">
   <div class="bloglist f_l">
-
     <% for (item of newsList) {%>
       <!--@@@@第一篇文章开始@@@@-->
       <h3>
-        <a href="/picInfo/<%=item.id%>" target="_blank">
+        <a href="/picInfo/<%=item._id%>" target="_blank">
           <%=item.title%>
         </a>
       </h3>
@@ -17,7 +16,7 @@
         <p>
           <%=item.desc%>
         </p>
-        <a title="" href="/picInfo/<%=item.id%>" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+        <a title="" href="/picInfo/<%=item._id%>" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
       </ul>
       <p class="dateview">
         <span></span>
@@ -56,132 +55,33 @@
 
     <div class="tuwen">
       <h3 class="tit">图文推荐</h3>
+      <!-- <%=recommend%> -->
       <ul>
+        <% for(item of recommend) {%>
         <li>
-          <a href="404.html">
+          <a href="/picInfo/<%=item._id%>">
             <img src="images/02.jpg">
-            <b>H5新属性</b>
+            <b><%=item.title%></b>
           </a>
           <p>
             <span class="tulanmu">
-              <a href="404.html">PC代码</a>
+              <a href="/picInfo/<%=item._id%>"><%=item.source%></a>
             </span>
-            <span class="tutime">2015-02-15</span>
+            <span class="tutime"><%=item.updateTime%></span>
           </p>
         </li>
-        <li>
-          <a href="404.html">
-            <img src="images/02.jpg">
-            <b>教你怎样用欠费手机拨打电话</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
-        <li>
-          <a href="404.html" title="手机的16个惊人小秘密，据说99.999%的人都不知">
-            <img src="images/3.jpeg" width="100" width="70" height="57">
-            <b>手机的16个惊人小秘密，据说...</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
-        <li>
-          <a href="404.html">
-            <img src="images/06.jpg">
-            <b>住在手机里的朋友</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
-        <li>
-          <a href="404.html">
-            <img src="images/04.jpg">
-            <b>教你怎样用欠费手机拨打电话</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
-        <li>
-          <a href="404.html">
-            <img src="images/02.jpg">
-            <b>教你怎样用欠费手机拨打电话</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
-        <li>
-          <a href="404.html" title="手机的16个惊人小秘密，据说99.999%的人都不知">
-            <img src="images/3.jpeg" width="70" height="57">
-            <b>手机的16个惊人小秘密，据说...</b>
-          </a>
-          <p>
-            <span class="tulanmu">
-              <a href="404.html">手机配件</a>
-            </span>
-            <span class="tutime">2015-02-15</span>
-          </p>
-        </li>
+        <%}%>
+        
       </ul>
     </div>
     <div class="ph">
       <h3 class="tit">点击排行</h3>
       <ul class="rank">
+        <% for (item of clickRank){%>
         <li>
-          <a href="404.html" title="【心路历程】一篇关于设计理念的文章" target="_blank">【心路历程】一篇关于设计理念的文章</a>
+          <a href="/picInfo/<%=item._id%>" title="<%=item.title%>" target="_blank"><%=item.title%></a>
         </li>
-        <li>
-          <a href="404.html" title="IP要突破2000+了" target="_blank">IP要突破2000+了</a>
-        </li>
-        <li>
-          <a href="404.html" title="帝国cms首页、自定义页面如何实现分页" target="_blank">帝国cms首页、自定义页面如何实现分页</a>
-        </li>
-        <li>
-          <a href="404.html" title="【已评选】给我模板PSD源文件，我给你设计HTML！" target="_blank">【已评选】给我模板PSD源文件，我给你设计HTML！</a>
-        </li>
-        <li>
-          <a href="404.html" title="【郑重申明】本站只提供静态模板下载！" target="_blank">【郑重申明】本站只提供静态模板下载！</a>
-        </li>
-        <li>
-          <a href="404.html" title="【孕期日记】生活本该如此" target="_blank">【孕期日记】生活本该如此</a>
-        </li>
-        <li>
-          <a href="404.html" title="【【深入理解html5系列-文本标签】…" target="_blank">【【深入理解html5系列-文本标签】…</a>
-        </li>
-        <li>
-          <a href="404.html" title=" 2014年度优秀个人博客排名公布" target="_blank"> 2014年度优秀个人博客排名公布</a>
-        </li>
-        <li>
-          <a href="404.html" title="2014年度优秀个人博客评选活动" target="_blank">2014年度优秀个人博客评选活动</a>
-        </li>
-        <li>
-          <a href="/404.html" title="使用CSS3制作文字、图片倒影" target="_blank">使用CSS3制作文字、图片倒影</a>
-        </li>
-        <li>
-          <a href="404.html" title="【分享】css3侧边栏导航不同方向划出效果" target="_blank">【分享】css3侧边栏导航不同方向划出效果</a>
-        </li>
-        <li>
-          <a href="404.html" title="分" target="_blank">分</a>
-        </li>
+        <%}%>
       </ul>
     </div>
     <div class="ad">

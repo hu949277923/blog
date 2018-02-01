@@ -35,3 +35,4 @@ const newsSchema = db.Schema({
   content:  { type: 'string', required: true },
 }); 
 exports.News = db.model('News', newsSchema)
+exports.ObjectId = ObjectId
