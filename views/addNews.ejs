@@ -1,0 +1,108 @@
+<link href="/stylesheets/github-markdown.css" rel="stylesheet" />
+<style>
+  .container {
+    width: 100%;
+  }
+  .con_content {
+    position: relative;
+    width: 100%;
+    height: 500px;
+  }
+  #mdeditor,#preview,#panel-editor,#panel-preview{
+    height: 100%;
+    width: 100%;
+  }
+  #toolbar {
+    height: 50px;
+    background-color: #444;
+    width: 100%;
+    color: #fff;
+    line-height: 50px;
+  }
+  #container {
+      overflow: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 50px;
+  }
+  #editor-column,
+  #preview-column {
+      width: 49.5%;
+      height: 100%;
+      overflow: auto;
+      position: relative;
+      background-color: #fff;
+  }
+  .pull-left {
+      float: left;
+  }
+
+  .pull-right {
+      float: right;
+  }
+</style>
+<div class="container">
+  <div class="con_content">
+    <div id="toolbar">
+      <form id="formData">
+        <input type="text" name="title" placeholder="标题">
+        <input type="text" name="desc" placeholder="描述">
+        <input type="text" name="author" placeholder="作者">
+        <input type="text" name="source" placeholder="来源">
+        <input type="hidden" name="content">
+        <!-- <button>保存</button> -->
+        <input id="save" type="button" value="保存">
+      </form>
+    </div>
+    
+    <div id="container">
+        <div id="editor-column" class="pull-left">
+          <div id="panel-editor">
+            <!--编辑区-->
+            <div class="editor-content" id="mdeditor" ></div>
+          </div>
+        </div>
+        <div id="preview-column" class="pull-right">
+          <div id="panel-preview">
+            <!--显示区-->
+            <div id="preview" class="markdown-body"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="blank"></div>
+</div>  
+<!-- <script src="/javascripts/marked.js"></script> -->
+<script src="/javascripts/markdown-it.min.js"></script>
+<script src="/javascripts/ace/ace.js"></script>
+<script>
+  // markdown 创建
+  var acen_edit = ace.edit('mdeditor'); 
+  acen_edit.setTheme('ace/theme/chrome');
+  acen_edit.setFontSize(20);
+  acen_edit.getSession().setMode('ace/mode/markdown');
+  acen_edit.renderer.setShowPrintMargin(false);
+  // markdown 文本键入时
+  $("#mdeditor").keyup(function() {
+    var md = window.markdownit();
+    var result = md.render(acen_edit.getValue());
+      $("#preview").html(result);
+  });
+
+  // 保存 
+  $("#save").click(function(){
+    $("#formData input[type=hidden]").val(acen_edit.getValue())
+    var data = $("#formData").serializeArray();
+    console.log(data)
+    $.post('/api/createNews', data, function(res) {
+      if (res.code === 200) {
+        alert('保存成功')
+        $("#formData").reset()
+      } else {
+        alert('保存失败')
+      }
+    })
+  })
+</script>

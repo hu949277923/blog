@@ -1,4 +1,5 @@
 
+  <link href="/stylesheets/github-markdown.css" rel="stylesheet" />
   <div class="container">
     <div class="con_content">
       <div class="about_box">
@@ -9,8 +10,10 @@
             <p class="box_p"><span>发布时间：<%= info.updateTime%></span><span>作者：<%= info.author%></span><span>来源：<%= info.source%></span><span>点击：<%= info.pv%></span></p>
           <!-- 可用于内容模板 -->
         </div>
-        <ul class="about_content">
-          <%-info.content %>
+        <ul class="">
+          <div class="markdown-body">
+          <%- info.content %>
+        </div>
         </ul>
 
         <!-- container代码 结束 -->

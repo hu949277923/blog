@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const render = require('koa-ejs')
-const path = require('path')
+// const path = require('path')
+const { pathViews, pathPublic } = require('./config/index')
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
@@ -11,6 +12,7 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const about = require('./routes/about')
 const newslistpic = require('./routes/newslistpic')
+const apiNews = require('./api/news')
 const error = require('./routes/error')
 
 // error handler
@@ -22,13 +24,15 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-static')(pathPublic))
+// app.use(require('koa-static')(__dirname + '/public'))
 
 // app.use(views(__dirname + '/views', {
 //   extension: 'ejs'
 // }))
 render(app, {
-  root: path.join(__dirname, 'views'),
+  // root: path.join(__dirname, 'views'),
+  root: pathViews,
   layout: 'layout',
   viewExt: 'ejs',
   cache: false,
@@ -40,6 +44,9 @@ app.use(async (ctx, next) => {
   await next()
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  console.log('-----ctx.status---------------')
+  console.log(ctx.status)
+
 })
 
 // routes
@@ -48,8 +55,9 @@ app.use(about.routes(), about.allowedMethods())
 app.use(newslistpic.routes(), newslistpic.allowedMethods())
 app.use(error.routes(), error.allowedMethods())
 
+app.use(apiNews.routes(), apiNews.allowedMethods())
 // error-handling
-app.on('error', (err, ctx) => {
+app.on('error', async (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
