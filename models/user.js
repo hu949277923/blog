@@ -1,22 +1,28 @@
-
-const User = require('../db/db').User
-const user = new User({
-  username: 'bill2',
-  nick: 'bill2',
-  password: 'www000000',
-  email: '15712892951@163.com',
-  mobile: 15712892951,
-  qq: 9492779231,
-  wx: 'hbb52391'
-})
+// import { Promise } from 'mongoose';
+// const Promise = require('bluebird');
+const { Users, ObjectId } = require('../db/db')
+// const ObjectID = require('mongodb').ObjectID
 module.exports = {
-  /**
-   * 创建用户
-   */
-  create: function(user) {
-    return User.create(user).exec()
+  getUserByUsername(userName) {
+    return new Promise((resolve, reject) => {
+      Users.findOne({"username": userName})
+      .exec((err, data) => {
+        if (!err) {
+          return resolve(data)
+        }
+        return reject(err)
+      })
+    })
   },
-  delete: function(user) {
-    
+  signUp(options) {
+    let user = new User(options)
+    return new Promise((resolve, reject) => {
+      user.save((err, result) => {
+        if (!err) {
+          return resolve(result)
+        } 
+        return reject(err)
+      })
+    })
   }
 }

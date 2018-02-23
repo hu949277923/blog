@@ -3,7 +3,8 @@ const router = require('koa-router')()
 const News = require('../models/news')
 // const marked = require('../public/javascripts/marked')
 const MarkdownIt = require('markdown-it'),
-md = new MarkdownIt();
+md = new MarkdownIt()
+const checkLogin = require('../middlewares/check.js').checkLogin
 
 // router.prefix('/newslistpic')
 
@@ -23,6 +24,7 @@ router.get('/picInfo/:id', async (ctx, next) => {
   })
 })
 router.get('/addNews', async (ctx, next) => {
+  await checkLogin(ctx)
   await ctx.render('addNews')
 })
 module.exports = router

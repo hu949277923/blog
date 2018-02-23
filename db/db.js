@@ -2,7 +2,7 @@ const db = require('mongoose')
 db.connect('mongodb://localhost:27017/blog')
 const ObjectId = db.Schema.Types.ObjectId
 /**
- * create User table
+ * create Users table
  */
 const userSchema = db.Schema({
   username: { type: 'string', required: true },
@@ -16,7 +16,7 @@ const userSchema = db.Schema({
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now }
 }); 
-exports.User = db.model('User', userSchema)
+exports.Users = db.model('Users', userSchema)
 /**
  * create news table
  */

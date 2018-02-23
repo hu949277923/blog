@@ -1,20 +1,33 @@
 const Koa = require('koa')
 const render = require('koa-ejs')
 // const path = require('path')
-const { pathViews, pathPublic } = require('./config/index')
+const { pathViews, pathPublic, sessionKey } = require('./config/index')
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const session = require("koa-session2")
+const Store = require("./utils/store")
 
 const index = require('./routes/index')
 const about = require('./routes/about')
 const newslistpic = require('./routes/newslistpic')
 const apiNews = require('./api/news')
+const apiUser = require('./api/user')
 const error = require('./routes/error')
 
+// session 中间件
+app.use(session({
+  key: sessionKey,   //default "koa:sess"
+  store: new Store()
+}));
+app.use(async (ctx, next) => {
+  // const totalhit = await Extends.addHit(ctx.path);
+  ctx.state = Object.assign(ctx.state, { session: ctx.session });
+  await next();
+})
 // error handler
 onerror(app)
 
@@ -54,8 +67,9 @@ app.use(index.routes(), index.allowedMethods())
 app.use(about.routes(), about.allowedMethods())
 app.use(newslistpic.routes(), newslistpic.allowedMethods())
 app.use(error.routes(), error.allowedMethods())
-
+// api
 app.use(apiNews.routes(), apiNews.allowedMethods())
+app.use(apiUser.routes(), apiUser.allowedMethods())
 // error-handling
 app.on('error', async (err, ctx) => {
   console.error('server error', err, ctx)

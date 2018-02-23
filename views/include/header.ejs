@@ -2,15 +2,25 @@
 <header>
   <div class="headtop"></div>
   <div class="contenttop">
-    <div class="logo f_l">谈同个人博客♠★♠一个前端设计的热血青年</div>
+    <div class="logo f_l">bill个人博客♠★♠一个前端设计的热血青年</div>
     <div class="search f_r">
-      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}"
-          onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="搜索" type="submit">
+        
+          
+      <form action="" method="post" name="loginForm" id="loginForm">
+          <% if (session.username){%>
+          <div id="signOut" style="float:right;">
+            <%= session.username%>
+            <a href="/signOut">退出</a>
+          </div>  
+          <% } else {%>
+         <div id="signIn">
+          <input name="username" id="username" class="input_text" value="bill" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入用户名'){this.style.color='#000';value=''}"
+            onblur="if(value==''){this.style.color='#999';value='请输入用户名'}" type="text">
+            <input type="password" name="password" id="password" class="input_text" value="www000000" style="color: rgb(153, 153, 153); margin-top:10px;" onfocus="if(value=='请输入密码'){this.style.color='#000';value=''}"
+            onblur="if(value==''){this.style.color='#999';value='请输入密码'}" >
+          <input name="Submit" class="input_submit" id="login" value="登录" type="button">
+        </div>   
+        <% }%>
       </form>
     </div>
     <div class="blank"></div>
@@ -45,22 +55,38 @@
           <li>
             <a href="/404">技术文章</a>
           </li>
+          <% if (session.username){ %> 
           <li>
-            <a href="/404">给我留言</a>
+            <a href="/addNews">发布资讯</a>
           </li>
+          <% } %>
         </ul>
       </div>
     </nav>
     <SCRIPT type=text/javascript>
-// Navigation Menu
-$(function() {
-$(".menu ul").css({display: "none"}); // Opera Fix
-$(".menu li").hover(function(){
-  $(this).find('ul:first').css({visibility: "visible",display: "none"}).slideDown("normal");
-},function(){
-  $(this).find('ul:first').css({visibility: "hidden"});
-});
-});
+
+// $(function() {
+// $(".menu ul").css({display: "none"}); // Opera Fix
+// $(".menu li").hover(function(){
+//   $(this).find('ul:first').css({visibility: "visible",display: "none"}).slideDown("normal");
+// },function(){
+//   $(this).find('ul:first').css({visibility: "hidden"});
+// });
+// });
+$("#login").click(function() {
+  var data = $("#loginForm").serializeArray();
+    console.log(data)
+    $.post('/api/signIn', data, function(res) {
+      if (Object.prototype.toString.call(res) === '[object String]') {
+        res = JSON.parse(res)
+      }
+      if (res.code === 200) {
+        location.reload()
+      } else {
+        alert(res.message)
+      }
+    })
+})
 </SCRIPT>
   </div>
 </header>
