@@ -9,9 +9,9 @@
           <%=item.title%>
         </a>
       </h3>
-      <figure>
+      <!-- <figure>
         <img src="images/img_1.jpg" alt="<%=item.title%>">
-      </figure>
+      </figure> -->
       <ul>
         <p>
           <%=item.desc%>
@@ -33,7 +33,7 @@
 
   <div class="r_box f_r">
     <div class="tit01">
-      <h3 class="tit">关注我</h3>
+      <h3 class="tit">与我联系</h3>
       <div class="gzwm">
         <ul>
           <li>
@@ -54,20 +54,23 @@
     <!--tit01 end-->
 
     <div class="tuwen">
+        <h3 class="tit">扫码关注</h3>
+        <div class="ad">
+            <img src="images/wx.jpg" height="300" width="110"> </div>
       <h3 class="tit">图文推荐</h3>
       <!-- <%=recommend%> -->
       <ul>
         <% for(item of recommend) {%>
         <li>
           <a href="/picInfo/<%=item._id%>">
-            <img src="images/02.jpg">
+            <!-- <img src="images/02.jpg"> -->
             <b><%=item.title%></b>
           </a>
           <p>
             <span class="tulanmu">
               <a href="/picInfo/<%=item._id%>"><%=item.source%></a>
             </span>
-            <span class="tutime"><%=item.updateTime%></span>
+            <span class="tutime"><%=moment(item.updateTime).format('YYYY-MM-DD hh:mm:ss')%></span>
           </p>
         </li>
         <%}%>
@@ -84,8 +87,7 @@
         <%}%>
       </ul>
     </div>
-    <div class="ad">
-      <img src="images/wx.jpg" height="300" width="110"> </div>
+    
   </div>
 </div>
 

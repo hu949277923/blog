@@ -41,6 +41,10 @@ module.exports = {
       })
     })
   },
+  /**
+   * 创建资讯
+   * @param { Object } options 
+   */
   addNews(options) {
     let news = new News(options)
     return new Promise((resolve, reject) => {
@@ -48,6 +52,36 @@ module.exports = {
         if (!err) {
           return resolve(result)
         } 
+        return reject(err)
+      })
+    })
+  },
+  /**
+   * pv加1
+   * @param {*} id 
+   */
+  incPv(id) {
+    return new Promise((resolve, reject) => {
+      News.where({ '_id':id })
+      .update( { $inc: { pv: 1 } })
+      .exec((err, data) => {
+        if (!err) {
+          return resolve(data)
+        }
+        return reject(err)
+      })
+    })
+  },
+  /** 
+   * 获取总条数
+   */
+  getTotalCount() {
+    return new Promise((resolve, reject) => {
+      News.count()
+      .exec((err, data) => {
+        if (!err) {
+          return resolve(data)
+        }
         return reject(err)
       })
     })

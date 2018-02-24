@@ -693,12 +693,12 @@
 .markdown-body hr {
   border-bottom-color: #eee;
 }
-ul {
+.markdown-body ul {
   list-style: circle;
 }
-ol {
+.markdown-body ol {
   list-style: decimal;
 }
-li {
+.markdown-body li {
   list-style: inherit;
 }

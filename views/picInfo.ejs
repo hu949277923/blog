@@ -7,7 +7,7 @@
         <div class="f_box">
           <p class="a_title"><%= info.title%></p>
           <p class="p_title"></p>
-            <p class="box_p"><span>发布时间：<%= info.updateTime%></span><span>作者：<%= info.author%></span><span>来源：<%= info.source%></span><span>点击：<%= info.pv%></span></p>
+            <p class="box_p"><span>发布时间：<%=moment(info.updateTime).format('YYYY-MM-DD hh:mm:ss')%></span><span>作者：<%= info.author%></span><span>来源：<%= info.source%></span><span>点击：<%= info.pv%></span></p>
           <!-- 可用于内容模板 -->
         </div>
         <ul class="">

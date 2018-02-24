@@ -71,8 +71,6 @@ input {
 }
 
 .bloglist ul {
-  float: left;
-  width: 70%;
   margin: 10px 0px 0 15px;
   line-height: 20px;
 }
@@ -173,17 +171,23 @@ a.readmore {
   overflow: hidden;
   clear: both;
   margin-bottom: 10px;
+  height: 58px;
+  position: relative;
 }
 
 .tuwen li img {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 70px;
-  float: left;
-  margin-right: 15px;
+  height: 58px;
 }
 
 .tuwen li b {
   overflow: hidden;
-  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
   font-weight: normal;
   color: #333;
   font-size: 14px;
@@ -196,6 +200,7 @@ a.readmore {
 }
 
 .tuwen p {
+  display: block;
   margin-top: 5px;
 }
 
@@ -253,11 +258,14 @@ a.readmore {
 .ad {
   width: 300px;
   overflow: hidden;
-  margin: 30px 0;
+  margin: 0 auto 20px;
+  text-align: center;
 }
 
 .ad img {
-  width: 300px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
 }
 
 .comment {

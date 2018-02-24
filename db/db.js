@@ -35,4 +35,12 @@ const newsSchema = db.Schema({
   content:  { type: 'string', required: true },
 }); 
 exports.News = db.model('News', newsSchema)
+/**
+ * create ips table
+ */
+const ipsSchema = db.Schema({
+  ip: { type: 'string', required: true },
+  articleId: { type: ObjectId, required: true }
+}); 
+exports.Ips = db.model('ips', ipsSchema)
 exports.ObjectId = ObjectId

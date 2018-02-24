@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const render = require('koa-ejs')
+const moment = require('moment')
 // const path = require('path')
 const { pathViews, pathPublic, sessionKey } = require('./config/index')
 const app = new Koa()
@@ -17,17 +18,11 @@ const newslistpic = require('./routes/newslistpic')
 const apiNews = require('./api/news')
 const apiUser = require('./api/user')
 const error = require('./routes/error')
-
 // session 中间件
 app.use(session({
   key: sessionKey,   //default "koa:sess"
   store: new Store()
 }));
-app.use(async (ctx, next) => {
-  // const totalhit = await Extends.addHit(ctx.path);
-  ctx.state = Object.assign(ctx.state, { session: ctx.session });
-  await next();
-})
 // error handler
 onerror(app)
 
@@ -54,12 +49,13 @@ render(app, {
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
-  await next()
+  ctx.state = Object.assign(ctx.state, { session: ctx.session, moment: moment});
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
   console.log('-----ctx.status---------------')
-  console.log(ctx.status)
-
+  // console.log(ctx.status)
+  // ctx.render()
+  await next()
 })
 
 // routes

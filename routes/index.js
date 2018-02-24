@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const News = require('../models/news')
+// const moment = require('moment')
 const recommend = []
 const clickRank = []
 router.get('/', async (ctx, next) => {
@@ -12,7 +13,6 @@ router.get('/', async (ctx, next) => {
   const recommend = await News.getNewsList({query: {"isRecommend": true}, pageSize: 7})
   const clickRank = await News.getNewsList({sortWay: 2, pageSize: 12})
   await ctx.render('index', {
-    title: 'Hello Koa 2!',
     newsList: newsList,
     recommend: recommend,
     clickRank: clickRank
