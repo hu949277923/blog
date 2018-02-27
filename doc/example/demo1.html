@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* way 1 */
+  .parent {
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  .children {
+    padding: 20px;
+    background-color: red;
+  }
+ 
+  /* way 2 */
+  .parent2{
+    height:300px;
+    width: 300px;
+    text-align: center;
+    background: #FD0C70;
+}
+.parent2 span{
+    display: inline-block;;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    zoom: 1;/*BFC*/
+    *display: inline;
+}
+.parent2 .child{
+    display: inline-block;
+    color: #fff;
+    padding: 20px;
+    background-color: red;
+    zoom: 1;/*BFC*/
+    *display: inline;
+}
+/* way 3 */
+.parent3 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+    background: #FD0C70;
+}
+.parent3 .child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  padding: 20px;
+}
+  </style>
+</head>
+<body>
+  <h1>way 1</h1>
+  <div class="parent">
+    <div class="children">text</div>
+  </div>
+  <h1>way 2</h1>
+  <div class="parent2">
+      <span></span>
+      <div class="child">text</div>
+  </div>
+  <h1>way 3</h1>
+  <div class="parent3">
+      <div class="child">text</div>
+  </div>
+  <script></script>
+</body>
+</html>
