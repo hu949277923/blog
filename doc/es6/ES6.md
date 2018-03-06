@@ -3,3 +3,6 @@
 [【ES6第3期】顶层对象和global 对象](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483926&idx=1&sn=3ddd8b7a2fa109556e95bc1d5e936fa1&chksm=ec2a38d1db5db1c76ca1b65024ede8dc19651ce1f3568273d90c8a2ea35aa5dda87fba8a7dcf#rd)
 [【ES6第4期】数组的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483891&idx=1&sn=08fd2253c0bc736e3b52db88b0fd787c&chksm=ec2a3b34db5db2224487da65f50b67165c67aacfc0f4696fd75613e84fafdfeb6c9af4b4684f#rd)
 [【ES6第5期】对象的解构赋值](http://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483929&idx=1&sn=883daa63f486abded5ff017cdbb4c00a&chksm=ec2a38dedb5db1c837fe234870391c6d6f46ff45ea8319489df3877a10b2f0c02b9c433d298f#rd)
+[【ES6第6期】字符串、数值和布尔值的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483959&idx=1&sn=d3212cd6fb4222c6e8804ad1f3c05d97&chksm=ec2a38f0db5db1e64b3e322872662a4ecf57b8be2197def143f66450761126d005e0f88f9fea#rd)
+[【ES6第7期】函数参数的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483962&idx=1&sn=a51d8f89d02ea58b153e55f20761ca0d&chksm=ec2a38fddb5db1eb3e629cdc2ec30933cdcce4fe5de5d647545e0db671ebd41107d54e0c7438#rd)
+[【ES6第8期】解构赋值圆括号问题](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483968&idx=1&sn=bcb4406f2508fed315d5639acde7c86e&chksm=ec2a3887db5db19103337b0cc5efe054ca60d018af3e2e3152e175f625c9c0ff220e355c0024#rd)
