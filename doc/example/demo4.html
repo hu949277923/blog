@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  Function.prototype.a = 'a';
+Object.prototype.b = 'b';
+function Person(){};
+var p = new Person();
+console.log(Person.prototype)
+console.log(p)
+console.log('p.a: '+ p.a); // p.a: undefined
+console.log('p.b: '+ p.b); // p.b: b
+
+  </script>
+</body>
+</html>

@@ -6,3 +6,5 @@
 [【ES6第6期】字符串、数值和布尔值的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483959&idx=1&sn=d3212cd6fb4222c6e8804ad1f3c05d97&chksm=ec2a38f0db5db1e64b3e322872662a4ecf57b8be2197def143f66450761126d005e0f88f9fea#rd)
 [【ES6第7期】函数参数的解构赋值](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483962&idx=1&sn=a51d8f89d02ea58b153e55f20761ca0d&chksm=ec2a38fddb5db1eb3e629cdc2ec30933cdcce4fe5de5d647545e0db671ebd41107d54e0c7438#rd)
 [【ES6第8期】解构赋值圆括号问题](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483968&idx=1&sn=bcb4406f2508fed315d5639acde7c86e&chksm=ec2a3887db5db19103337b0cc5efe054ca60d018af3e2e3152e175f625c9c0ff220e355c0024#rd)
+[【ES6第9期】解构赋值用途](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483971&idx=1&sn=2ea492a84a4f9dfbe4fc0dd2a1a11b3f&chksm=ec2a3884db5db192adfdf54025ef8932d5a32b0212d646bd5270a5f1f82ccbc3e8193a833f12#rd)
+[【ES6第10期】字符的 Unicode 表示法](https://mp.weixin.qq.com/s?__biz=MzI4OTY4MTMyMA==&mid=2247483974&idx=1&sn=1db74b685104462d37e024fc2f76d2e4&chksm=ec2a3881db5db19792f988e8befe651d2995476b90bf5f51bcaeec94a202e50ec721d6e7c1f2#rd)

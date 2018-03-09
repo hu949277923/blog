@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  let str = 'asdfghjklabbbbbqwertyuiopiaia';
+  // 统计字符串中出现频率最高的
+  function test(str) {
+    let strArr = [...str];
+    let arr = [];
+    let max = 0;
+    let maxVal;
+    strArr.forEach((value) => {
+      arr[value] = !arr[value] ?  1 : arr[value] + 1;
+      if (arr[value] > max) {
+        max = arr[value]
+        maxVal = value
+      }
+    })
+    return maxVal
+  }
+  console.log(test(str) )
+  // 数组去重
+  let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
+  function unique(arr) {
+    return [...new Set(arr)]
+  }
+  console.log(unique(arr))
+  function unique2(arr) {
+    let nArr = []
+    arr.forEach((value) => {
+      nArr[value] = 0;
+    })
+    return Object.keys(nArr)
+  }
+  console.log(unique2(arr))
+  function unique3(arr) {
+    return arr.filter((item, index, array) => {
+      return index === array.indexOf(item)
+    })
+  }
+  console.log(unique3(arr))
+
+  // 翻转字符串
+  let str2 ="Hello Dog 𠮷";
+  function reverseString(str) {
+    return [...str].reverse().join("")
+  }
+  console.log(reverseString(str2))
+  function reverseString2(str) {
+    return str.split("").reverse().join("");
+  }
+  console.log(reverseString2(str2))
+
+  function reverseString3(str) {
+    let i = str.length;
+    let str2 = ''
+    for (let codePoint of str) {
+      str2 = codePoint + str2
+    }
+    return str2;
+  }
+  console.log(reverseString3(str2))
+  // 数组中最大差值
+  let arr2 = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
+  function difference(arr) {
+    let min = arr[0];
+    let max = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+      max = arr[i] > max ? arr[i] : max;
+      min = arr[i] < min ? arr[i] : min;
+    }
+    return max - min;
+  }
+  console.log(difference(arr2))
+  </script>
+</body>
+</html>

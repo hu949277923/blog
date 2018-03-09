@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test">按钮</div>
+  <script>
+  // 如何解决 touchstart 事件与 click 事件的冲突
+  const oBtn = document.getElementById("test");
+  oBtn.addEventListener('touchstart', e => {
+    e.preventDefault();
+    console.log('touchstart event');
+  })
+  oBtn.addEventListener('click', e => {
+    // e.preventDefault();
+    console.log('click event');
+  })
+
+  </script>
+</body>
+</html>
