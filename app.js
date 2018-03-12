@@ -18,6 +18,13 @@ const newslistpic = require('./routes/newslistpic')
 const apiNews = require('./api/news')
 const apiUser = require('./api/user')
 const error = require('./routes/error')
+
+// 静态资源缓存中间件
+const staticCache = require('koa-static-cache')
+app.use(staticCache(pathPublic, {
+  maxAge: 365 * 24 * 60 * 60,
+  gzip: true
+}))
 // session 中间件
 app.use(session({
   key: sessionKey,   //default "koa:sess"
@@ -43,16 +50,23 @@ render(app, {
   root: pathViews,
   layout: 'layout',
   viewExt: 'ejs',
-  cache: false,
-  debug: true
+  cache: true,
+  debug: false
 });
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
   ctx.state = Object.assign(ctx.state, { session: ctx.session, moment: moment});
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
   console.log('-----ctx.status---------------')
+  // ctx.set('ETag', '123')
+  ctx.acceptsEncodings('gzip', 'deflate', 'identity');
+  console.log(ctx.fresh);
+  if (ctx.fresh) {
+    ctx.status = 304
+    return
+  }
   // console.log(ctx.status)
   // ctx.render()
   await next()
