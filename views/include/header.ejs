@@ -14,9 +14,9 @@
           </div>  
           <% } else {%>
          <div id="signIn">
-          <input name="username" id="username" class="input_text" value="bill" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入用户名'){this.style.color='#000';value=''}"
+          <input name="username" id="username" class="input_text" value="" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入用户名'){this.style.color='#000';value=''}"
             onblur="if(value==''){this.style.color='#999';value='请输入用户名'}" type="text">
-            <input type="password" name="password" id="password" class="input_text" value="www000000" style="color: rgb(153, 153, 153); margin-top:10px;" onfocus="if(value=='请输入密码'){this.style.color='#000';value=''}"
+            <input type="password" name="password" id="password" class="input_text" value="" style="color: rgb(153, 153, 153); margin-top:10px;" onfocus="if(value=='请输入密码'){this.style.color='#000';value=''}"
             onblur="if(value==''){this.style.color='#999';value='请输入密码'}" >
           <input name="Submit" class="input_submit" id="login" value="登录" type="button">
         </div>   
@@ -84,7 +84,7 @@ $("#login").click(function() {
       if (Object.prototype.toString.call(res) === '[object String]') {
         res = JSON.parse(res)
       }
-      if (res.code === 200) {
+      if (res.code == 200) {
         location.reload()
       } else {
         alert(res.message)

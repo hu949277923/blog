@@ -97,9 +97,12 @@
     var data = $("#formData").serializeArray();
     console.log(data)
     $.post('/api/createNews', data, function(res) {
-      if (res.code === 200) {
+      if (Object.prototype.toString.call(res) === '[object String]') {
+        res = JSON.parse(res)
+      }
+      if (res.code == 200) {
         alert('保存成功')
-        $("#formData").reset()
+        // $("#formData").reset()
       } else {
         alert('保存失败')
       }

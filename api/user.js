@@ -10,6 +10,7 @@ router.post('/signIn', async (ctx, next) => {
   const req = ctx.request.body
   console.log(req.username)
   const res = await User.getUserByUsername(req.username)
+  console.log(res)
   let message = '成功登录';
   let code = 200
   if (!res) {
@@ -20,8 +21,10 @@ router.post('/signIn', async (ctx, next) => {
     code = 404
     message ='密码不正确'
   }
-  // 写入session
-  ctx.session.username = req.username
+  if (code === 200) {
+    // 写入session
+    ctx.session.username = req.username
+  }
   ctx.type='application/json;charset=utf-8'
   ctx.body = {
     code: code,
