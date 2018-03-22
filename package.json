@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "koa-ejs": "^4.1.0",
+    "koa-static-cache": "^5.1.2",
     "nodemon": "^1.8.1"
   }
 }

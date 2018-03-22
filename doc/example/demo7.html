@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1
+    function a() {
+      console.log('a');
+      c();
+    }
+    function b() {
+      console.log('b');
+      a();
+    }
+    function c() {
+      console.log('c');
+    }
+    a(); // a c
+    b(); // b a c
+    c(); // c
+    // 2
+    function a(fun) {
+      console.log('a');
+      fun(function(){
+        c();
+      })
+    }
+    function b(fun){
+      console.log('b');
+      fun();
+    }
+    function c() {
+      console.log('c');
+    }
+    a(b);  // a b c
+    c(); // c
+    // 3. 
+    function a(fun){
+      console.log(b);
+    }
+    function c() {
+      console.log('c');
+    }
+    a(function(){
+      b();
+    })
+    a(c);
+    // 4
+    function a(fun) {
+      console.log('a');
+      fun(function(){
+        console.log('111');
+        c();
+      })
+    }
+    function b(fun){
+      console.log(b);
+    }
+    function c() {
+      console.log('c');
+    }
+    a(function(fun){
+      fun();
+      b();
+    })
+    a(c);
+    // 5
+    var aa = function(item) {
+      console.log(item.a);
+    }
+    var list = [{a:1},{a:2},{a:3}]
+    for (var i = 0;i<list.length;i++) {
+      aa(list[i]);
+    }
+    // 6. 实现一个函数clone, 可以对JavaScript中的5种主要数据类型进行复制
+    // 7. 在js中什么是伪数组，如何将伪数组转化为标准数组
+    function test5() {
+      var arr = Array.prototype.slice.call(arguments)
+      console.log(Object.prototype.toString.call([1,2,3,4]))
+    }
+    // 8. 
+    var name = 'world';
+    (function(){
+      console.log(name);
+      if (typeof name === 'undefined') {
+        var name = 'jack';
+        console.log('Goodbye' + name);
+      } else {
+        console.log('Hello ' + name);
+      }
+      if (!!$(this).val())
+    })();
+    // 9. 如何判断变量的类型
+    // 10.
+    function Foo() {
+      this.id = 'foo instance';
+    }
+    Foo.id = 'foo';
+    Foo.prototype.sayName = function() {
+      console.log(this.id)
+    }
+    Foo.sayName = function() {
+      console.log(this.id)
+    
+    Foo.sayName();
+    new Foo().sayName();
+    var func = Foo.sayName;
+    func();
+  </script>
+</body>
+</html>

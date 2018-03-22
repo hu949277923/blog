@@ -8,76 +8,127 @@
 </head>
 <body>
   <script>
-  let str = 'asdfghjklabbbbbqwertyuiopiaia';
-  // 统计字符串中出现频率最高的
-  function test(str) {
-    let strArr = [...str];
-    let arr = [];
-    let max = 0;
-    let maxVal;
-    strArr.forEach((value) => {
-      arr[value] = !arr[value] ?  1 : arr[value] + 1;
-      if (arr[value] > max) {
-        max = arr[value]
-        maxVal = value
-      }
-    })
-    return maxVal
-  }
-  console.log(test(str) )
-  // 数组去重
-  let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
-  function unique(arr) {
-    return [...new Set(arr)]
-  }
-  console.log(unique(arr))
-  function unique2(arr) {
-    let nArr = []
-    arr.forEach((value) => {
-      nArr[value] = 0;
-    })
-    return Object.keys(nArr)
-  }
-  console.log(unique2(arr))
-  function unique3(arr) {
-    return arr.filter((item, index, array) => {
-      return index === array.indexOf(item)
-    })
-  }
-  console.log(unique3(arr))
+  // let str = 'asdfghjklabbbbbqwertyuiopiaia';
+  // // 统计字符串中出现频率最高的
+  // function test(str) {
+  //   let strArr = [...str];
+  //   let arr = [];
+  //   let max = 0;
+  //   let maxVal;
+  //   strArr.forEach((value) => {
+  //     arr[value] = !arr[value] ?  1 : arr[value] + 1;
+  //     if (arr[value] > max) {
+  //       max = arr[value]
+  //       maxVal = value
+  //     }
+  //   })
+  //   return maxVal
+  // }
+  // console.log(test(str) )
+  // // 数组去重
+  // let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
+  // function unique(arr) {
+  //   return [...new Set(arr)]
+  // }
+  // console.log(unique(arr))
+  // function unique2(arr) {
+  //   let nArr = []
+  //   arr.forEach((value) => {
+  //     nArr[value] = 0;
+  //   })
+  //   return Object.keys(nArr)
+  // }
+  // console.log(unique2(arr))
+  // function unique3(arr) {
+  //   return arr.filter((item, index, array) => {
+  //     return index === array.indexOf(item)
+  //   })
+  // }
+  // console.log(unique3(arr))
 
-  // 翻转字符串
-  let str2 ="Hello Dog 𠮷";
-  function reverseString(str) {
-    return [...str].reverse().join("")
-  }
-  console.log(reverseString(str2))
-  function reverseString2(str) {
-    return str.split("").reverse().join("");
-  }
-  console.log(reverseString2(str2))
+  // // 翻转字符串
+  // let str2 ="Hello Dog 𠮷";
+  // function reverseString(str) {
+  //   return [...str].reverse().join("")
+  // }
+  // console.log(reverseString(str2))
+  // function reverseString2(str) {
+  //   return str.split("").reverse().join("");
+  // }
+  // console.log(reverseString2(str2))
 
-  function reverseString3(str) {
-    let i = str.length;
-    let str2 = ''
-    for (let codePoint of str) {
-      str2 = codePoint + str2
+  // function reverseString3(str) {
+  //   let i = str.length;
+  //   let str2 = ''
+  //   for (let codePoint of str) {
+  //     str2 = codePoint + str2
+  //   }
+  //   return str2;
+  // }
+  // console.log(reverseString3(str2))
+  // // 数组中最大差值
+  // let arr2 = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
+  // function difference(arr) {
+  //   let min = arr[0];
+  //   let max = arr[0];
+  //   for (let i = 0; i < arr.length; i++) {
+  //     max = arr[i] > max ? arr[i] : max;
+  //     min = arr[i] < min ? arr[i] : min;
+  //   }
+  //   return max - min;
+  // }
+  // console.log(difference(arr2))
+
+
+  // 1. js 统计一个字符串出现频率最高的字母/数字
+function strChar(str) {
+  let arr = [...str];
+  let maxVal, max = 0;
+  let obj = {};
+  arr.forEach((value) => {
+    obj[value] = obj[value] ? obj[value] = obj[value] + 1 : obj[value] = 1;
+    if (obj[value] > max) {
+      max = obj[value];
+      maxVal = value;
     }
-    return str2;
+  })
+  return {
+    max, maxVal
   }
-  console.log(reverseString3(str2))
-  // 数组中最大差值
-  let arr2 = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
-  function difference(arr) {
-    let min = arr[0];
-    let max = arr[0];
-    for (let i = 0; i < arr.length; i++) {
-      max = arr[i] > max ? arr[i] : max;
-      min = arr[i] < min ? arr[i] : min;
+}
+console.log(strChar('qwerqwerrttwerfsdfwqfdsdfsdfsdsd'))
+function strChar2(str) {
+  // let arr = [...str];
+  let arr = [];
+  for (c of str) {
+    arr.push(c);
+  }
+  let maxVal, max = 0;
+  let obj = {};
+  arr.forEach((value) => {
+    obj[value] = obj[value] ? obj[value] = obj[value] + 1 : obj[value] = 1;
+    if (obj[value] > max) {
+      max = obj[value];
+      maxVal = value;
     }
-    return max - min;
+  })
+  return {
+    max, maxVal
   }
-  console.log(difference(arr2))
+}
+console.log(strChar2('qwerqwerrttwerfsdfwqfdsdfsdfsdsd'))
+
+function strChar3(str) {
+  str
+}
+console.log(strChar3('qwerqwerrttwerfsdfwqfdsdfsdfsdsd'))
+  // 2. 数组去重
+
+  // 3. 翻转字符串
+  // 4. 数组中最大差值
+  // 5. 不借助临时变量，进行两个整数的交换
+  // 6. 排序 (从小到大)
+
   </script>
 </body>
 </html>
