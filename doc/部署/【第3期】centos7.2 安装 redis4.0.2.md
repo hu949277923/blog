@@ -57,4 +57,10 @@ tcp        0      0 0.0.0.0:6379                0.0.0.0:*                   LIST
 
 就可以看出 redis为后台运行了。
 
+## 关闭redis
+
+```
+进入src目录下，执行./redis-cli shutdown
+```
+
 
