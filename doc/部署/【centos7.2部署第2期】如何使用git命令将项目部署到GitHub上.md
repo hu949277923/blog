@@ -1,4 +1,4 @@
-# 【第2期】如何使用git命令将项目部署到GitHub上
+# 【centos7.2部署第2期】如何使用git命令将项目部署到GitHub上
 
 1. 设置git的user name和email：
 

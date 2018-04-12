@@ -1,4 +1,4 @@
-# 【第3期】centos7.2 安装 redis4.0.2
+# 【centos7.2部署第3期】centos7.2 安装 redis4.0.2
 首先确保安装gcc, gcc-c++,如果没有则优先安装
 ```
  yum install gcc

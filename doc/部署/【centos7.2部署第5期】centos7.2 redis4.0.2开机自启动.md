@@ -1,4 +1,4 @@
-# 【第5期】centos7.2 redis4.0.2开机自启动
+# 【centos7.2部署第5期】centos7.2 redis4.0.2开机自启动
 
 我的redis安装目录在/tools/redis/redis-4.0.2
 

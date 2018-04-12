@@ -1,4 +1,4 @@
-# 【第4期】CentOS7.2 下安装MongoDB
+# 【centos7.2部署第4期】CentOS7.2 下安装MongoDB
 
 ## 创建配置文件
 ```

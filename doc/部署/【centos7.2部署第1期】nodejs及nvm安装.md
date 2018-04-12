@@ -1,4 +1,4 @@
-#【第1期】nodejs及nvm安装
+#【centos7.2部署第1期】nodejs及nvm安装
 
 ## 步骤一： 部署之前准备工作
 
