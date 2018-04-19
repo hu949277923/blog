@@ -47,7 +47,7 @@ var obj = {
 function copy(obj) {
   var o = {}
   for (let i in obj) {
-    if (obj[i].toString() == '[object Object]') {
+    if (Object.prototype.toString.call(obj[i]) == '[object Object]') {
       var obj2 = copy(obj[i])
       o[i] = obj2;
     } else {
