@@ -63,3 +63,22 @@ app.use(staticCache(pathPublic, {
   gzip: true
 }))
 ```
+
+## 引入markdown文本编辑器
+
+```
+<script src="/javascripts/markdown-it.min.js"></script>
+<script src="/javascripts/ace/ace.js"></script>
+// markdown 创建
+var acen_edit = ace.edit('mdeditor'); 
+acen_edit.setTheme('ace/theme/chrome');
+acen_edit.setFontSize(20);
+acen_edit.getSession().setMode('ace/mode/markdown');
+acen_edit.renderer.setShowPrintMargin(false);
+// markdown 文本键入时
+$("#mdeditor").keyup(function() {
+  var md = window.markdownit();
+  var result = md.render(acen_edit.getValue());
+    $("#preview").html(result);
+});
+```
