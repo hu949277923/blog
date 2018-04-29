@@ -46,3 +46,39 @@ app.use(async (ctx, next) => {
   await next()
 })
 ```
+
+## 静态资源缓存
+
+项目上线后，发现每次访问都很慢，经测试发现，静态资源每次都会重新发起请求，后来找到koa-static-cache插件，可以将静态资源缓存，具体如下：
+
+```
+$npm install koa-static-cache
+
+```
+
+```
+const staticCache = require('koa-static-cache')
+app.use(staticCache(pathPublic, {
+  maxAge: 365 * 24 * 60 * 60,
+  gzip: true
+}))
+```
+
+## 引入markdown文本编辑器
+
+```
+<script src="/javascripts/markdown-it.min.js"></script>
+<script src="/javascripts/ace/ace.js"></script>
+// markdown 创建
+var acen_edit = ace.edit('mdeditor'); 
+acen_edit.setTheme('ace/theme/chrome');
+acen_edit.setFontSize(20);
+acen_edit.getSession().setMode('ace/mode/markdown');
+acen_edit.renderer.setShowPrintMargin(false);
+// markdown 文本键入时
+$("#mdeditor").keyup(function() {
+  var md = window.markdownit();
+  var result = md.render(acen_edit.getValue());
+    $("#preview").html(result);
+});
+```
