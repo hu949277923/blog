@@ -2,18 +2,25 @@
 <html>
 <head>
     <title></title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
+    <script type="text/javascript" src="https://www.buywujin.com/static/v1.0.3/scripts/ui/widgets/template.js"></script>
 </head>
 <body>
-
+  <div id="test"></div>
+<script id="tpl-user" type="text/html">
+  {{ html }}
+  </script>
 <script>
-  for (var i = 0; i < 10; i++) {
-        setTimeout(function(i){
-          return function() {
-            console.log(i)
-          }
-        }(i))
+  var html = '<p>aaa<p>'
+  var tpl = document.getElementById("tpl-user")
+  var data = {
+    html: html
   }
+  var test = document.getElementById("test");
+  // 禁止转义
+  template.config("escape", false);
+  var html = template('tpl-user', data);
+  test.innerHTML = html
+console.log(html)
 </script>
 </body>
 </html>
