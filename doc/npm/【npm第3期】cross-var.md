@@ -1,12 +1,45 @@
-# 【npm第3期】cross-var\del-cli\cpr\make-dir-cli
+# 【npm第3期】cross-var
 
-到目前为止，如果你在 Linux、Mac 平台做开发，所有的 npm script 都会顺利运行，但是 Windows 下面的同学可能就比较痛苦了，因为不是所有的 shell 命令都是跨平台兼容的，甚至各种常见的文件系统操作也是不兼容的。
+在npm script中使用变量，linux和window环境下的使用方式不一样：linux用$npm_package_version;window用%npm_package_version%,为了解决多平台的兼容问题，开发了cross-var 工具，具体使用如下：
 
-实际上社区中已经有非常多的小工具可以帮我们优雅的实现跨平台的 npm script，下面我们探索下如何实现跨平台的文件系统操作、变量引用、环境变量设置。
+## 安装
 
+```
+$ npm install cross-var -D
+```
 
-## 文件系统操作的跨平台兼容
+## 修改npm script
 
-- rimraf 或 del-cli，用来删除文件和目录，实现类似于 rm -rf 的功能；
-- cpr，用于拷贝、复制文件和目录，实现类似于 cp -r 的功能；
-- make-dir-cli，用于创建目录，实现类似于 mkdir -p 的功能；
+``` package.json
+// 修改前
+{
+  "version": "1.0.0",
+  "config": {
+    "port": "1337"
+  },
+  "scripts": {
+    "prebuild": "rimraf public/$npm_package_version",
+    "build:html": "jade --obj data.json src/index.jade --out public/$npm_package_version/",
+    "server:create": "http-server public/$npm_package_version -p $npm_package_config_port",
+    "server:launch": "opn http://localhost:$npm_package_config_port"
+  }
+}
+```
+
+``` package.json
+// 修改后
+{
+  "version": "1.0.0",
+  "config": {
+    "port": "1337"
+  },
+  "scripts": {
+    "prebuild": "cross-var rimraf public/$npm_package_version",
+    "build:html": "cross-var jade --obj data.json src/index.jade --out public/$npm_package_version/",
+    "server:create": "cross-var http-server public/$npm_package_version -p $npm_package_config_port",
+    "server:launch": "cross-var opn http://localhost:$npm_package_config_port"
+  }
+}
+```
+
+**注意**当npm script中有两条子命令时，我们需要用引号把整个命令包起来（注意这里是用的双引号，且必须转义），然后在前面加上 cross-var
