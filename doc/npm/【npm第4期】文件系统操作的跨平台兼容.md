@@ -22,7 +22,7 @@ $ npm i rimraf cpr make-dir-cli -D
 
 ## 用法
 
-``` package.json
+```
 {
   "version": "1.0.0",
   "config": {

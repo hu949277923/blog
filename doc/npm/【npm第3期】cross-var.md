@@ -10,7 +10,7 @@ $ npm install cross-var -D
 
 ## 修改npm script
 
-``` package.json
+```
 // 修改前
 {
   "version": "1.0.0",
@@ -26,7 +26,7 @@ $ npm install cross-var -D
 }
 ```
 
-``` package.json
+```
 // 修改后
 {
   "version": "1.0.0",
