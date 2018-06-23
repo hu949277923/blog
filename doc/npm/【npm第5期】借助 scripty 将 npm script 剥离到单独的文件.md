@@ -87,12 +87,12 @@ opn http://localhost:$npm_package_config_port
 
 ```
 
- > shell 脚本里面是可以随意使用 npm 的内置变量和自定义变量的
+*** shell 脚本里面是可以随意使用 npm 的内置变量和自定义变量的***
 
- ## 修改 package.json
 
- ```
- "scripts": {
+## 修改 package.json
+```
+"scripts": {
     "eslint": "# 校验js\n  eslint *.js",
     "preeslint": "echo 'preeslint'",
     "lint:css": "# 校验css \t stylelint *.css",
@@ -109,99 +109,28 @@ opn http://localhost:$npm_package_config_port
     "cover:serve": "scripty",
     "cover:open": "scripty"
  }
- ```
+```
 
  ## 测试过程
 
- ```
- $ npm run cover
+```
+$ npm run cover
 
-> init-npm@0.1.1 cover /vipkid/learn/npm/init-npm
-> scripty
+$ init-npm@0.1.1 cover /vipkid/learn/npm/init-npm
+$ scripty
 
-Executing "/vipkid/learn/npm/init-npm/scripts/cover.sh":
+$ Executing "/vipkid/learn/npm/init-npm/scripts/cover.sh":
 
-> #! /usr/bin/env bash
->
-> # remove old coverage reports
-> rimraf coverage && rimraf .nyc_output
->
-> # run test and collect new coverage
-> nyc --reporter=html npm test
->
-> make-dir -p coverage_arhive/$npm_package_version
->
-> cp coverage/* coverage_arhive/$npm_package_version
->
-> npm-run-all --parallel cover:serve cover:open
->
-
-
-
-> init-npm@0.1.1 pretest /vipkid/learn/npm/init-npm
-> npm run all2
-
-
-> init-npm@0.1.1 all2 /vipkid/learn/npm/init-npm
-> npm-run-all lint:*
-
-
-> init-npm@0.1.1 lint:css /vipkid/learn/npm/init-npm
-> # 校验css 	 stylelint *.css
-
-
-> init-npm@0.1.1 lint:json /vipkid/learn/npm/init-npm
-> jsonlint *.json
-
-{
-  "test": "aaa"
-}
-
-> init-npm@0.1.1 lint:markdown /vipkid/learn/npm/init-npm
-> markdownlint *.md
-
-
-> init-npm@0.1.1 test /vipkid/learn/npm/init-npm
-> cross-env NODE_ENV=test mocha test/
-
-hello
-
-
-  0 passing (1ms)
-
-Specify at least one path
-
-> init-npm@0.1.1 cover:serve /vipkid/learn/npm/init-npm
-> scripty
-
-
-> init-npm@0.1.1 cover:open /vipkid/learn/npm/init-npm
-> scripty
-
-Executing "/vipkid/learn/npm/init-npm/scripts/cover/serve.sh":
-
-> #!/usr/bin/env bash
->
-> http-server coverage_arhive/$npm_package_verdsion -p $npm_package_config_port
->
-
-
-Executing "/vipkid/learn/npm/init-npm/scripts/cover/open.sh":
-
-> #!/usr/bin/env bash
->
-> sleep 1
->
-> opn http://localhost:$npm_package_config_port
->
-
-
-Starting up http-server, serving coverage_arhive/
+$ #! /usr/bin/env bash
+$
+$ 
+$ ...
+$ Starting up http-server, serving coverage_arhive/
 Available on:
   http://127.0.0.1:3000
   http://192.168.48.65:3000
 Hit CTRL-C to stop the server
 
- ```
+```
 
  
