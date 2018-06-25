@@ -24,6 +24,7 @@ TypeError: log.gauge.isEnabled is not a function
 ## s:
 
 ```
+$ rm -rf /Users/bill/.config/yarn/global/node_modules/npm/
 $ yarn global upgrade
 yarn global v1.6.0
 [1/4] 🔍  Resolving packages...
