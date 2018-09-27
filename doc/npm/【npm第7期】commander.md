@@ -234,7 +234,7 @@ Commander 将会尝试在入口脚本（例如 `./examples/pm`）的目录中搜
 
  帮助信息是 commander 基于你的程序自动生成的，下面是 `--help` 生成的帮助信息：
 
-```  
+```js
 $ ./examples/pizza --help
 Usage: pizza [options]
 
@@ -248,6 +248,7 @@ Options:
   -b, --bbq            Add bbq sauce
   -c, --cheese <type>  Add the specified type of cheese [marble]
   -C, --no-cheese      You do not want any cheese
+
 ```
 
 ### 自定义帮助
