@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function Promise(fn) {
+    // let resolveCall = () => {
+    //   console.log('默认')
+    // }
+    const resolves = []
+    this.then = (onFulfilled) => {
+      
+      console.log('onFulfilled', onFulfilled)
+      // resolveCall = onFulfilled
+      resolves.push(onFulfilled)
+      return this
+    }
+    function resolve(v) {
+      setTimeout(() => {
+        // console.log(resolveCall)
+        // resolveCall(v)
+        console.log(resolves)
+        resolves.forEach(fn => {
+          // console.log(v, fn)
+          // console.log(fn(v))
+          v = fn(v) || v
+          // console.log('value', v)
+          return v
+        })
+      },0)
+    }
+    // console.log(resolveCall)
+    fn(resolve)
+  }
+  new Promise((resolve, reject) => {
+    // setTimeout(() => {
+      resolve('success')
+    // },0)
+  }).then((r) => {
+    console.log(r)
+    return 2
+  }).then((r) => {
+    console.log(r)
+  })
+  </script>
+</body>
+</html>

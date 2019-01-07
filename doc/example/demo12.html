@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    const getData = () => {
+      return new Promise((resolve) => {
+        setTimeout(resolve, 2000);
+      });
+    }
+    // 方法1
+    async function timeout() {
+      const res = await getData()
+      console.log(res)
+    }
+    // 方法2
+    async function timeout2() {
+      const getDat = getData()
+      const res = await getDat
+      console.log(res)
+    }
+    // function test() {
+    //   console.time('timeout3')
+    //   this.timeout()
+    //   this.timeout2()
+    //   count()
+    //   console.timeEnd('timeout3')
+    // }
+    // test()
+    function count() {
+
+      console.time('count')
+      for(let i = 0; i < 1000000000; i++) {
+        // code
+      }
+      console.timeEnd('count')
+    }
+    // let timer = setInterval(() => {
+    //   i++
+    //   console.log(i)
+    // }, 1000)
+    // console.time('timeout')
+    // timeout()
+    // let time = 0;
+    for(let i = 0; i < 1000000; i++) {
+      time = i
+    }
+    // console.log(time)
+    // console.timeEnd('timeout')
+
+
+
+const getList1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('getList1')
+    }, 2000)
+  })
+}
+const getList2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('getList2')
+    }, 2000)
+  })
+}
+// 1
+async function test() {
+  console.time('time1')
+  const res1 = await getList1()
+  console.log(res1)
+  const res2 = await getList2()
+  console.log(res2)
+  console.timeEnd('time1')
+}
+// 2
+async function test2() {
+  console.time('time2')
+  let res1 = getList1()
+  let res2 = getList2()
+  res1 = await res1
+  console.log(res1)
+  res1 = await res2
+  console.log(res2)
+  console.timeEnd('time2')
+}
+async function test12() {
+  console.time('time3')
+  const res1 = await getList1()
+  console.log(res1)
+}
+async function test13() {
+  const res2 = await getList2()
+  console.log(res2)
+  console.timeEnd('time3')
+}
+function test3() {
+  test12()
+  test13()
+}
+test()
+test2()
+test3()
+  </script>
+</body>
+</html>
