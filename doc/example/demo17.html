@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // Production steps of ECMA-262, Edition 6, 22.1.2.1
+// Reference: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
+// if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    // 判断是否为函数或方法
+    var isCallable = function (fn) {
+      // debugger
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    // 转换成整数
+    var toInteger = function (value) {
+      // debugger
+      var number = Number(value);
+      // isNaN 返回0
+      if (isNaN(number)) { return 0; }
+      // number为0 或者不是有限数字， 则返回 number
+      if (number === 0 || !isFinite(number)) { return number; }
+      // 如果以上条件不符，则返回如下，number 的绝对值向下去整，然后再确定下number 是正数还是负数
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    // 最大有效数字
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    // 返回一个有效数字
+    var toLength = function (value) {
+      // debugger
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+    // 若value为 set对象 则 转为数组
+    var toItems = function (value) {
+      // debugger
+      // support set
+      if (value.size > 0 && value.values) {
+        let values = value.values()
+        var it = values.next()
+        var o = []
+        while (!it.done) {
+          o.push(it.value)
+          it = values.next()
+        }
+        return o
+      }
+      return Object(value);
+    };
+    // The length property of the from method is 1.
+    return function from(arrayLike/*, mapFn, thisArg */) {
+      // debugger
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      }
+      // 3. Let items be ToObject(arrayLike).
+      var items = toItems(arrayLike);
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {
+        // 5. else      
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError('Array.from: when provided, the second argument must be a function');
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method 
+      // of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+  }());
+  Array.from()
+// }
+if (!Array.from) {
+  Array.from = (function() {
+    return function(arr, /*mapFun, thisArg*/) {
+      // 1、arr 若为 undefined or null 则抛出异常
+      // 2、arr 若为 set对象 则转为 array 对象; 否则返回object对象 
+      // 3、判断是否有第二个参数且如果不是函数则抛出异常
+      // 4、第三个参数如果存在则将其保存下来后续用
+      // 5、length 为整数，且是个有效数字
+      // 6、循环遍历array 对象，如果有mapFun函数则将array 对象 的value 与key作为参数传入mapFun，将mapFun结果返回；若存在第三个参数thisArg，则将mapFun 的this指向thisArg
+      // 7、返回新创建的array对象
+    }
+  })()
+}
+  </script>
+</body>
+</html>
