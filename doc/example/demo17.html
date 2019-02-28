@@ -64,7 +64,9 @@
         throw new TypeError("Array.from requires an array-like object - not null or undefined");
       }
       // 3. Let items be ToObject(arrayLike).
+      console.log(arrayLike)
       var items = toItems(arrayLike);
+      console.log(items.length)
       // 4. If mapfn is undefined, then let mapping be false.
       var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
       var T;
@@ -110,21 +112,13 @@
       return A;
     };
   }());
-  Array.from()
-// }
-if (!Array.from) {
-  Array.from = (function() {
-    return function(arr, /*mapFun, thisArg*/) {
-      // 1、arr 若为 undefined or null 则抛出异常
-      // 2、arr 若为 set对象 则转为 array 对象; 否则返回object对象 
-      // 3、判断是否有第二个参数且如果不是函数则抛出异常
-      // 4、第三个参数如果存在则将其保存下来后续用
-      // 5、length 为整数，且是个有效数字
-      // 6、循环遍历array 对象，如果有mapFun函数则将array 对象 的value 与key作为参数传入mapFun，将mapFun结果返回；若存在第三个参数thisArg，则将mapFun 的this指向thisArg
-      // 7、返回新创建的array对象
-    }
-  })()
+
+function test() {
+  console.log(Object.prototype.toString.call(Object(arguments)))
 }
+test(1,2,3,4)
+// }
+
   </script>
 </body>
 </html>
