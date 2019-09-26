@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .item {
+      display: flex;
+    }
+    .item1 {
+      width: 30px;
+      background: red;
+    }
+    .item2 {
+      width: 20px;
+      background: blue;
+    }
+    .item3 {
+      width: 40px;
+      background: lawngreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="item">
+    <div class="item1">item1</div>
+    <div class="item2">item2</div>
+    <div class="item3">item3</div>
+  </div>
+  <div id="grow">grow</div>
+  <div id="create">create</div>
+  <div id="grow2">grow2</div>
+  <script>
+    // 
+  var x = [];
+
+function grow() {
+  for (var i = 0; i < 10000; i++) {
+    document.body.appendChild(document.createElement('div'));
+  }
+  x.push(new Array(1000000).join('x'));
+}
+
+document.getElementById('grow').addEventListener('click', grow);
+var detachedNodes;
+
+function create() {
+  var ul = document.createElement('ul');
+  for (var i = 0; i < 10; i++) {
+    var li = document.createElement('li');
+    ul.appendChild(li);
+  }
+  detachedTree = ul;
+}
+
+document.getElementById('create').addEventListener('click', create);
+detachedTree = null // 解决内存占用
+var x = [];
+
+function grow2() {
+  x.push(new Array(1000000).join('x'));
+}
+
+document.getElementById('grow2').addEventListener('click', grow2);
+x = []
+  </script>
+</body>
+</html>
