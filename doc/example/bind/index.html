@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const foo = {
+      value: 1
+    }
+    function bar(name,val) {
+      console.log(name,val)
+      // console.log(this.value)
+      return this.value
+    }
+    const bindFoo = bar.bind(foo)
+    bindFoo()
+    // applay2 模拟实现
+    Function.prototype.bind2 = function(context) {
+      const _this = this
+      return function() {
+        return _this.apply(context)
+      }
+    }
+
+    const bindFoo2 = bar.bind2(foo)
+    console.log(bindFoo2())
+    // applay3 模拟实现
+    Function.prototype.bind3 = function(context, ...arg) {
+      const _this = this
+      console.log(arguments)
+      return function(arg1) {
+        console.log('context',...arg)
+        return _this.apply(context, ...arg,arg1)
+      }
+    }
+    const bindFoo3 = bar.bind3(foo, 'test', 'aa')
+    console.log(bindFoo3('111'))
+  </script>
+</body>
+</html>
