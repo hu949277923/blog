@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    const PEDDING = 'pedding'
+    const RESOLVE = 'resolved'
+    const REJECT = 'rejected'
+    function MyPromise(fn) {
+      const _this = this
+      _this.status = PEDDING
+      _this.value = null
+      _this.resolvedCallback = []
+      _this.rejectedCallback = []
+      function resolve(val) {
+        debugger
+        if (_this.status === PEDDING) {
+          _this.value = val
+          _this.status = RESOLVE
+          _this.resolvedCallback.forEach(cb => cb(_this.value))
+        }
+      }
+      function reject(val) {
+        debugger
+        if (_this.status === PEDDING) {
+          _this.value = val
+          _this.status = REJECT
+          _this.rejectedCallback.forEach(cb => cb(_this.value))
+        }
+      }
+      fn(resolve, reject)
+    }
+    MyPromise.prototype.then = function (onResolved, onRejected){
+      onResolved = typeof onResolved === 'function' ?  onResolved : v => v
+      onRejected = typeof onRejected === 'function' ?  onRejected : v => v
+      debugger
+      if (this.status === PEDDING) {
+        this.resolvedCallback.push(onResolved)
+        this.rejectedCallback.push(onRejected)
+      }
+      if (this.status === RESOLVE) {
+        onResolved(this.value)
+      }
+      if (this.status === REJECT) {
+        onRejected(this.value)
+      }
+      return this
+    }
+    new MyPromise((resolve, reject) => {
+      debugger
+      setTimeout((err) => {
+        reject(222)
+      },0)
+    }).then((val) => {
+      console.log(val)
+    },(val) => {
+      console.log(val)
+    }).then((val) => {
+      console.log(val)
+    },(val) => {
+      console.log(val)
+    })
+  </script>
+</body>
+</html>

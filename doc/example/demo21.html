@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./demo21/default.css" title="default">
+  <link rel="alternate stylesheet" href="./demo21/red.css" title="red">
+  <link rel="alternate stylesheet" href="./demo21/green.css" title="green">
+</head>
+<body>
+  <input type="radio" name="skin" value="./demo21/default.css" checked>
+  <input type="radio" name="skin" value="./demo21/red.css">
+  <input type="radio" name="skin" value="./demo21/green.css">
+  <script>
+  var elelinks = document.querySelectorAll('link[title]')
+  var eleradios = document.querySelectorAll('input[type=radio]')
+  elelinks = [].slice.call(elelinks)
+  eleradios = [].slice.call(eleradios)
+  eleradios.forEach(function (radio) {
+    radio.addEventListener("click", function () {
+      var val = this.value
+      console.log(val)
+      elelinks.forEach((item) => {
+        item.disabled = true
+        if (item.getAttribute('href') == val) {
+          item.disabled = false;
+        }
+      })
+    }, false)
+  })
+ 
+  </script>
+</body>
+</html>

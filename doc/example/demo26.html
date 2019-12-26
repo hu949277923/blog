@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function* gen() {
+      var val = 100
+      while(100) {
+        val = yield val;
+        // console.log(val);
+      }
+    }
+    var g = gen()
+    for (let i = 0; i < 5; i++) {
+      console.log(i, g.next(i).value)
+    }
+    // i = 0 时，next传入参数为0，并将参数0赋值给上一句yield, 由于没有上一句yield 所以会被忽略
+    // 0 100
+    // 1 1
+    // 2 2
+    // 3 3
+    // 4 4
+  </script>
+</body>
+</html>

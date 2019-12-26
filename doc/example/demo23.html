@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // 从第 2 位开始删除 0 个元素，插入“drum”
+  var myFish = ["angel", "clown", "mandarin", "surgeon"];
+ myFish.splice(2, 0, "drum")
+  console.log(myFish)
+  // 从第 2 位开始删除 0 个元素，插入“drum” 和 "guitar"
+  var myFish7 = ['angel', 'clown', 'mandarin', 'sturgeon'];
+  myFish7.splice(2, 0, "drum", 'guitar')
+  console.log(myFish7)
+  // 从第 3 位开始删除 1 个元素
+  var myFish6 = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+  myFish6.splice(3, 1)
+  console.log('myFish6', myFish6)
+  // 从第 2 位开始删除 1 个元素，插入“trumpet”
+  var myFish5 = ['angel', 'clown', 'drum', 'sturgeon'];
+  myFish5.splice(2, 1, 'trumpet')
+  console.log('myFish5', myFish5)
+  // 从第 0 位开始删除 2 个元素，插入"parrot"、"anemone"和"blue"
+  var myFish4 = ['angel', 'clown', 'trumpet', 'sturgeon'];
+  myFish4.splice(0, 2, 'parrot', 'anemone', 'blue')
+  console.log('myFish4', myFish4)
+  // 从第 2 位开始删除 2 个元素
+  var myFish3 = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
+  myFish3.splice(2, 2)
+  console.log('myFish3',myFish3)
+  // 从倒数第 2 位开始删除 1 个元素
+  var myFish2 = ['angel', 'clown', 'mandarin', 'sturgeon'];
+  myFish2.splice(-2, 1)
+  console.log('myFish2',myFish2)
+  // 从第 2 位开始删除所有元素
+  var myFish1 = ['angel', 'clown', 'mandarin', 'sturgeon'];
+  myFish1.splice(2)
+  console.log(myFish1)
+  </script>
+</body>
+</html>

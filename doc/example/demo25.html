@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var buffer = new ArrayBuffer(4)
+  var view = new DataView(buffer)
+  // view.setInt8(0, 128)
+  // view.setInt8(1, -129)
+  // console.log(view.getInt8(0))
+  // console.log(view.getInt8(1))
+  // view.setUint8(0, -255)
+  // view.setUint8(1, 256)
+
+  // console.log(view.getUint8(0))
+  // console.log(view.getUint8(1))
+  view.setInt16(0,1)
+  // view.setInt32(1,1)
+  console.log(view)
+
+  var buffer = new ArrayBuffer(16)
+  var view1 = new DataView(buffer)
+  var view2 = new DataView(buffer, 12, 4)
+  view1.setInt8(12, 42)
+  console.log(view1.getInt8(12))
+  console.log(view2.getInt8(0))
+  console.log(view1.getInt16(6)) // ???
+  console.log(view1.getInt32(3)) // ???
+  </script>
+</body>
+</html>

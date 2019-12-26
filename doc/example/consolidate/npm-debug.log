@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'metalnpm',
+1 verbose cli   'run',
+1 verbose cli   'metalsmith' ]
+2 info using npm@3.10.10
+3 info using node@v6.14.2
+4 verbose stack Error: Invalid name: "{{name}}"
+4 verbose stack     at ensureValidName (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/normalize-package-data/lib/fixer.js:336:15)
+4 verbose stack     at Object.fixNameField (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/normalize-package-data/lib/fixer.js:215:5)
+4 verbose stack     at /Users/bill/.config/yarn/global/node_modules/npm/node_modules/normalize-package-data/lib/normalize.js:32:38
+4 verbose stack     at Array.forEach (native)
+4 verbose stack     at normalize (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/normalize-package-data/lib/normalize.js:31:15)
+4 verbose stack     at final (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/read-package-json/read-json.js:349:5)
+4 verbose stack     at then (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/read-package-json/read-json.js:124:5)
+4 verbose stack     at ReadFileContext.<anonymous> (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/read-package-json/read-json.js:295:20)
+4 verbose stack     at ReadFileContext.callback (/Users/bill/.config/yarn/global/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:78:16)
+4 verbose stack     at FSReqWrap.readFileAfterOpen [as oncomplete] (fs.js:367:13)
+5 verbose cwd /vipkid/learn/blog/doc/example/consolidate
+6 error Darwin 17.7.0
+7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "metalnpm" "run" "metalsmith"
+8 error node v6.14.2
+9 error npm  v3.10.10
+10 error Invalid name: "{{name}}"
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

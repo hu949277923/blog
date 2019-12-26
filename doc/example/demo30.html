@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var INF = Number.MAX_SAFE_INTEGER
+  var graph = [[0, 2, 4, 0, 0, 0],
+              [0, 0, 1, 4, 2, 0],
+              [0, 0, 0, 0, 3, 0],
+              [0, 0, 0, 0, 0, 2],
+              [0, 0, 0, 3, 0, 2],
+              [0, 0, 0, 0, 0, 0]];
+  this.dijkstra = function(src) {
+    var dist = [], visited = [],
+    length = this.graph.length;
+    for (var i = 0; i < length; i++) { //{1}
+      dist[i] = INF;
+    }
+    dist[src] = 0; //{2}
+    for (var i = 0; i < length-1; i++) { //{3}
+      var u = minDistance(dist, visited); //{4}
+      visited[u] = true; //{5}
+      for (var v = 0; v < length; v++) {
+        if (!visited[v] &&
+        this.graph[u][v] != 0 && dist[u] != INF &&
+        dist[u] + this.graph[u][v] < dist[v]) { //{6}
+          dist[v] = dist[u] + this.graph[u][v]; //{7}
+        }
+      } 
+    }
+    return dist; //{8}
+  };
+  var minKey = function(dist, visited) {
+    var min = INF, minIndex = -1;
+    for (var v = 0; v < dist.length; v++) {
+      if (visited[v] == false && dist[v] <= min) {
+        min = dist[v];
+        minIndex = v;
+      }
+    }
+    return minIndex;
+  };
+  // console.log(this.dijkstra(0))
+  this.prim = function() {
+    var parent = [],
+      key = [],
+      visited = [],
+      length = this.graph.length,
+      i;
+    for (i = 0; i < length; i++) { //{1}
+      key[i] = INF;
+      visited[i] = false;
+    }
+    key[0] = 0; //{2}
+    parent[0] = -1;
+    for (i = 0; i < length-1; i++) { //{3}
+      var u = minKey(key, visited); //{4}
+      visited[u] = true; //{5}
+      for (var v = 0; v < length; v++) {
+        if (this.graph[u][v] && visited[v] == false
+        && this.graph[u][v] < key[v]) { //{6}
+          parent[v] = u; //{7}
+          key[v] = this.graph[u][v]; //{8}
+        }
+      }
+    }
+    return parent; //{9}
+  };
+  // console.log(this.prim())
+  // coins = 1 5 10 25
+  // cache = {}
+  // amount = 36
+  // min = [] newmin newamount
+  // coin = 1
+  // newamount 36 - 1 = 35
+  // newmin = me.makeChange(35)
+  // 
+  // amount = 2
+  // min = [] newmin newamount
+  // coin = 1
+  // ...
+  // newamount 2 - 1 = 1
+  // newmin = {0:[1]}
+  // 
+  // amount = 1
+  // min = [] newmin newamount
+  // coin = 1
+  // newamount 1 - 1 = 0
+  // newmin = []
+  // 
+  // amount = 0
+  // []
+  // true true true
+  // min = [1]
+// 
+  // amount = 
+  // []
+  // true true true
+  // min = [1]
+  function MinCoinChange(coins){
+      var coins = coins; //{1}
+      var cache = {};    //{2}
+      this.getCache = function() {
+        return cache
+      }
+      this.makeChange = function(amount) {
+        // debugger
+        var me = this;
+        if (!amount) { //{3}
+          return []; 
+        }
+        if (cache[amount]) { //{4}
+          return cache[amount];
+        }
+        var min = [], newMin, newAmount;
+        for (var i=0; i<coins.length; i++){ //{5}
+          var coin = coins[i];
+          newAmount = amount - coin; //{6}
+          if (newAmount >= 0){
+            newMin = me.makeChange(newAmount); //{7}
+          }
+          if (
+            newAmount >= 0 && //{8}
+            // 1 1-1
+            // 1 2-1
+            // 0 
+            (newMin.length < min.length-1 || !min.length)//{9} ??
+            && (newMin.length || !newAmount)) //{10}) ??
+            {
+              min = [coin].concat(newMin); //{11}
+              // console.log('new Min ' + min + ' for ' + amount);
+            } 
+        }
+        // console.log(cache)
+        return (cache[amount] = min); //{12}
+      };
+    }
+  var a = new MinCoinChange([1,3,4])
+ var b = a.makeChange(6)
+ console.log(b)
+//  console.log(a.getCache())
+//  最少硬币找零问题
+function MinCoinChange2(coins) {
+  const cache = {}
+  this.makeChange = function(amount) {
+    if (!amount) {
+      return []
+    }
+    if (cache[amount]) {
+      return cache[amount]
+    }
+    let newAmount, newMin, min = []
+    for (let i = 0; i < coins.length; i++) {
+      const coin = coins[i]
+      newAmount = amount - coin
+      if (newAmount >= 0) {
+        newMin = this.makeChange(newAmount)
+      }
+      if (newAmount >= 0 
+      && (newMin.length < min.length - 1 || !min.length)
+      && (newMin.length || !newAmount)) {
+        min = [coin].concat(newMin)
+      }
+    }
+    return (cache[amount] = min)
+  }
+}
+  var a2 = new MinCoinChange2([1,3,4])
+ var b2 = a2.makeChange(6)
+ console.log(b2)
+//  console.log(a.getCache())
+// 给定一个固定大小、能够携重W的背包， 以及一组有价值和重量的物品，找出一个最佳解决方案，使得装入背包的物品总重量不超过W， 且总价值最大。
+
+function knapSack(capacity, weights, values, n) {
+  debugger
+  var i, w, a, b, kS = [];
+  for (i = 0; i <= n; i++) { //{1}
+    kS[i] = [];
+  }
+  for (i = 0; i <= n; i++) {
+    for (w = 0; w <= capacity; w++) {
+      if (i == 0 || w == 0) { //{2}
+        kS[i][w] = 0;
+      } else if (weights[i-1] <= w) { //{3}
+        a = values[i-1] + kS[i-1][w-weights[i-1]];
+        b = kS[i-1][w];
+        kS[i][w] = (a > b) ? a : b; //{4} max(a,b)
+      } else {
+        kS[i][w] = kS[i-1][w]; //{5}
+      }
+    }
+  }
+  console.log(kS)
+  return kS[n][capacity]; //{6}
+}
+var values = [3, 4, 5],
+      weights = [2, 3, 4],
+      capacity = 5,
+      n = values.length;
+console.log(knapSack(capacity, weights, values, n)); //输出 7
+  </script>
+</body>
+</html>

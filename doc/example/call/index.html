@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // call
+    function Foo(name, age) {
+      this.name = name
+      this.age = age
+    }
+    function Bar(name, age) {
+      Foo.myCall(this, name, age)
+      this.sex = '1'
+    }
+    Function.prototype.myCall = function(ctx) {
+      if (typeof this !== 'function') {
+        throw new Error(`${this.name} is not a function`)
+      }
+      ctx = ctx || window
+      ctx.fn = this
+      const arg = [...arguments].slice(1)
+      ctx.fn(...arg)
+      delete ctx
+      return ctx
+    }
+    console.log(new Bar('bill', '12').age)
+  </script>
+</body>
+</html>

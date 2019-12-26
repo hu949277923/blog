@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  Vue.components('grandson',{
+    template: '<span><children><slot name="grandson"></slot></children></span>'
+  })
+  Vue.components('child',{
+    template: '<p><grandson><slot name="grandson"></slot></grandson></p>',
+    components: {
+      grandson
+    }
+  }),
+  new Vue({
+    template: '<div><child><i slot="grandson">显示grandson</i></child></div>',
+    components: {
+      child
+    }
+  })
+  
+  </script>
+  <div>
+    <p>
+      <span>
+        <i>显示grandson</i>
+      </span>
+    </p>
+  </div>
+</body>
+</html>

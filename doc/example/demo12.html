@@ -5,9 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+  .test {
+    display:flex;
+  }
+  .item {
+    border: 1px solid #ccc;
+    flex:1;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  </style>
 </head>
 <body>
   <div id="app"></div>
+  <div class="test">
+    <div class="item">123</div>
+    <div class="item">12342424241234242424123424242412342424241234242424123424242412342424241234242424123424242412342424241234242424123424242412342424241234242424123424242412342424241234242424123424242412342424241234242424</div>
+    <div class="item">123123123123</div>
+    <div class="item">123123123123123123</div>
+  </div>
   <script>
     const getData = () => {
       return new Promise((resolve) => {
