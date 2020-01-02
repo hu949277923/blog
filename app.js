@@ -49,8 +49,8 @@ app.use(require('koa-static')(pathPublic))
 render(app, {
   // root: path.join(__dirname, 'views'),
   root: pathViews,
-  layout: 'template',
-  viewExt: 'html',
+  layout: 'layout',
+  viewExt: 'ejs',
   cache: false,
   debug: true
 });
