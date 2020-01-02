@@ -49,10 +49,10 @@ app.use(require('koa-static')(pathPublic))
 render(app, {
   // root: path.join(__dirname, 'views'),
   root: pathViews,
-  layout: 'layout',
-  viewExt: 'ejs',
+  layout: 'template',
+  viewExt: 'html',
   cache: false,
-  debug: false
+  debug: true
 });
 // logger
 app.use(async (ctx, next) => {
