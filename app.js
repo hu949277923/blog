@@ -25,6 +25,7 @@ app.use(staticCache(pathPublic, {
   maxAge: 365 * 24 * 60 * 60,
   gzip: true
 }))
+
 // session 中间件
 app.use(session({
   key: sessionKey,   //default "koa:sess"
@@ -50,7 +51,7 @@ render(app, {
   root: pathViews,
   layout: 'layout',
   viewExt: 'ejs',
-  cache: true,
+  cache: false,
   debug: false
 });
 // logger
