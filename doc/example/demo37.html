@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body style="overflow: auto;">
+  <input type="text" id="input">
+  <div style="height: 10000px;width: 200px;"></div>
+  <script>
+   // promise
+   
+   const PEDDING = 'pedding'
+   const REJECTED = 'rejected'
+   const RESOLVED = 'resolved'
+   function Promise(func) {
+    this.status = PEDDING
+    this.value = null
+    this.resolvedCallback = []
+    this.rejectedCallback = []
+    const resolved = (val) =>{
+      if (this.status === PEDDING) {
+        this.value = val
+        this.status = RESOLVED
+        this.resolvedCallback.forEach(resolve => {
+          resolve(val)
+        })
+      }
+    }
+    const rejected = (val) =>{
+      if (this.status === PEDDING) {
+        this.value = val
+        this.status = REJECTED
+        this.rejectedCallback.forEach(reject => {
+          reject(val)
+        })
+      }
+    }
+    func(resolved, rejected)
+    console.log(this)
+    return this
+   }
+   Promise.prototype.then = function(resolve, reject) {
+     if (this.status === PEDDING) {
+      this.resolvedCallback.push(resolve)
+      this.rejectedCallback.push(reject)
+    }
+    if (this.status === RESOLVED) {
+      resolve(this.value)
+    }
+    if (this.status === REJECTED) {
+      reject(this.value)
+    }
+    return this
+   }
+   var a = new Promise((resolve, reject) => {
+     debugger
+    resolve(1)
+   }).then((v) => {
+     console.log(v)
+   }, (e) => {
+    console.log(e)
+   }).then(v => {
+     console.log(v)
+   })
+   console.log(a)
+  </script>
+</body>
+</html>
+

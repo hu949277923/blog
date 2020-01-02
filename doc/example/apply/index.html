@@ -15,21 +15,35 @@
       return this
     }
     function Bar(name, age) {
-      console.log(Foo.apply2(this, [name, age]))
+      console.log(Foo.call2(this, name, age))
       this.sex = '1'
     }
+    Function.prototype.myCall = function(ctx) {
+      if (typeof this !== 'function') {
+        throw new Error(`${this.name} is not a function`)
+      }
+      ctx = ctx || window
+      ctx.fn = this
+      const arg = [...arguments].slice(1)
+      ctx.fn(...arg)
+      delete ctx.fn
+      return ctx
+    }
     // console.log(new Bar('bill', '12').age)
-    Function.prototype.apply2 = function(ctx, arg) {
+    Function.prototype.call2 = function(ctx, ...arg) {
       if (typeof this !== 'function') {
         throw new Error(`${this.name} is not a function`)
       }
       ctx.fn = this
-      console.log('arg',...arg, typeof arg)
       const result = ctx.fn(...arg)
-      delete ctx.fn
       return result
     }
     console.log(new Bar('bill', '12').age)
+    function t(){
+      this.name = 'a'
+      this.age = '10'
+    }
+    console.log(new t().name)
   </script>
 </body>
 </html>

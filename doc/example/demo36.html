@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body style="overflow: auto;">
+  <input type="text" id="input">
+  <div style="height: 10000px;width: 200px;"></div>
+  <script>
+    // 函数防抖
+    function debounce(func, immedate) {
+      let timer = null
+      let _this = null
+      let contxt = null
+      const layer = () => timer = setTimeout(() => {
+          func.apply(_this, contxt)
+        }, 500)
+      return function(...arg) {
+        _this = this
+        contxt = arg
+        if (!timer) {
+          if (immedate) {
+            func.apply(this, arg)
+          }
+          layer()
+        } else {
+          clearTimeout(timer)
+          layer()
+        }
+      }
+    }
+    function throttle(func, wait) {
+      let timer = null
+      let _this = this
+      let ctx = null
+      const layer = () => timer = setTimeout(() => {
+        clearTimeout(timer)
+        func.apply(_this, ctx)
+        timer = null
+      }, wait)
+      return function(...arg) {
+        ctx = arg
+        _this = this
+        if (!timer) {
+          layer()
+        }
+      }
+    }
+    function throttle2(func, wait) {
+      let prev = Date.now()
+      return function(...arg) {
+        let curr = Date.now()
+        if (curr - prev >= wait) {
+          func.apply(this, arg)
+          prev = Date.now()
+        }
+      }
+    }
+    var id = document.getElementById("input")
+    const test = debounce(function(e) {
+      console.log(e.target.value)
+    })
+    id.addEventListener('input',debounce(function(e) {
+      console.log(e.target.value)
+    }, true), false)
+    window.addEventListener('scroll', throttle2(function() {
+      console.log(1111)
+    }, 1000), false)
+
+    var a = {
+      b: {
+        c: {
+          d: 11
+        }
+      },
+      d: {
+        h: '23',
+        c: 'ddd',
+        a: function() {
+          console.log(11)
+        },
+        b: /^@112$/
+      }
+    }
+    function clone(obj) {
+      // debugger
+      let nobj = null
+      const type = Object.prototype.toString.call(obj)
+      if (type === '[object Object]') {
+        nobj = Object.create(null)
+        // obj.forEach((item, key) => {
+        //   nobj[key] = clone(item)
+        // })
+        for (const key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            nobj[key] = clone(obj[key])
+          }
+        }
+      }
+      if (type === '[object Array]' && obj.length > 0) {
+        nobj = []
+        for (let i = 0; i < obj.length; i++) {
+          nobj.push(clone(obj[i]))
+        }
+      }
+      if (type === '[object Number]') {
+        nobj = obj
+      }
+      if (type === '[object String]') {
+        nobj = obj
+      }
+      return nobj
+    }
+    var b = clone(a)
+    b.d.h = 10000
+    console.log(b)
+    console.log(a)
+  </script>
+</body>
+</html>

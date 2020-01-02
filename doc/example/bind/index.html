@@ -11,8 +11,8 @@
     const foo = {
       value: 1
     }
-    function bar(name,val) {
-      console.log(name,val)
+    function bar(name,val, c) {
+      console.log(name,val, c)
       // console.log(this.value)
       return this.value
     }
@@ -29,16 +29,81 @@
     const bindFoo2 = bar.bind2(foo)
     console.log(bindFoo2())
     // applay3 模拟实现
-    Function.prototype.bind3 = function(context, ...arg) {
+    // Function.prototype.bind3 = function(context, ...arg) {
+    //   const _this = this
+    //   console.log(arguments)
+    //   return function(arg1) {
+    //     console.log('context',...arg)
+    //     return _this.apply(context, ...arg,arg1)
+    //   }
+    // }
+    // const bindFoo3 = bar.bind3(foo, 'test', 'aa')
+    // console.log(bindFoo3('111'))
+
+    Function.prototype.bind4 = function(ctx, ...arg) {
       const _this = this
-      console.log(arguments)
-      return function(arg1) {
-        console.log('context',...arg)
-        return _this.apply(context, ...arg,arg1)
+      return function(...arg2) {
+        console.log(...arg, ...arg2)
+        return _this.apply(ctx, [...arg, ...arg2])
       }
     }
-    const bindFoo3 = bar.bind3(foo, 'test', 'aa')
-    console.log(bindFoo3('111'))
-  </script>
+    const bindFoo4 = bar.bind4(foo, 'test', 'aa')
+    console.log(bindFoo4('111'))
+    Function.prototype.bind5 = function(ctx, ...arg) {
+      const _this = this
+      return function(...arg2) {
+        ctx.fn = _this
+        const result = ctx.fn(...arg, ...arg2)
+        delete ctx.fn
+        return result
+      }
+    }
+    const bindFoo5 = bar.bind5(foo, 'test222', 'aa22')
+    console.log(bindFoo5('222'))
+
+    function Boo(name, age) {
+      this.name = name
+      this.age = age
+      return {}
+    }
+    var a = new Boo('day', 20)
+    console.log(a)
+    function create(func, ...arg) {
+      let obj = {}
+      // obj.__proto__ = func.prototype
+      Object.setPrototypeOf(obj, func.prototype)
+      let result = func.apply(obj, arg)
+      console.log('create',result)
+      return result instanceof Object ? result : obj
+    }
+    var b = create(Boo, 'day', 20)
+    console.log(b)
+
+    function create2(Con, ...args) {
+      let obj = {}
+      Object.setPrototypeOf(obj, Con.prototype)
+      let result = Con.apply(obj, args)
+      return result instanceof Object ? result : obj
+    }
+    var c = create2(Boo, 'day', 20)
+    console.log(c)
+    // myInstanceof(result, Object)
+    // instanseof
+    const myInstanceof = function(left, right) {
+      left = left.__proto__
+      let prototype = right.prototype
+      while(true) {
+        if (left === null || left === undefined) {
+          return false
+        }
+        if (left === prototype) {
+          return true
+        }
+        left = left.__proto__
+      }
+    }
+    var a = Object.create(null)
+    console.log(a instanceof Object)
+    </script>
 </body>
 </html>
