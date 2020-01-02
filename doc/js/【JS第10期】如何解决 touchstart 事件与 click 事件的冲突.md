@@ -56,7 +56,7 @@ Button.addEventListener("click", e => {
 
 ### 基于功能检测绑定事件
 
-第二种方法是受到这篇[博客](https://link.juejin.im/?target=https%3A%2F%2Fjoshtronic.com%2F2015%2F04%2F19%2Fhandling-click-and-touch-events-on-the-same-element%2F)的启发，我们可以通过判断浏览器是否支持 touchstart 事件来封装元素的点击事件，这样客户端会根据当前环境判定元素应该绑定的事件类型，代码如下：
+第二种方法是受到这篇[](https://link.juejin.im/?target=https%3A%2F%2Fjoshtronic.com%2F2015%2F04%2F19%2Fhandling-click-and-touch-events-on-the-same-element%2F)的启发，我们可以通过判断浏览器是否支持 touchstart 事件来封装元素的点击事件，这样客户端会根据当前环境判定元素应该绑定的事件类型，代码如下：
 
 ```
 const Button = document.getElementById("targetButton")

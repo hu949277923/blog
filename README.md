@@ -1,5 +1,5 @@
 # blog
-基于node+mongoose+koa2+ejs 开发的个人博客
+基于node+mongoose+koa2+ejs 开发的个人
 # 环境搭建
 
 - node.js

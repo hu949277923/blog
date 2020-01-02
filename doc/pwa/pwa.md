@@ -1,6 +1,6 @@
 【 PWA 】 参考链接：https://blog.csdn.net/qq_19238139/article/details/77531191
 
-        今天开始 Research 一个新的前端技术，PWA（ 全称：Progressive Web App ）也就是说这是个渐进式的网页应用程序。这个技术的呢是 Google 公司于2015 年提出的，2016 年 6 月才推广的项目。针对这一项技术目前在国外似乎已经很流行了，目前应用这项技术最火热的应用是在印度（ 大家或许会疑惑为什么是在印度最流行呢吧，下文中会告诉大家哦 ），既然 PWA 这项技术在国外已经非常的流行了，那么在国内或许会不远了（ Angular 5 中新增的功能中，重点在于能够更轻松的构建渐进式网络应用程序，也就是 PWA 了。作为Google 和 mozilla 的产物，肯定会越来越重视啦 ）我引用一下关于PWA技术的一篇最早的博客文中的一句话吧： “ escaping tabs without losing our soul “（ 翻译一下哈：逃避选项卡而不丢失我们的灵魂 ）。
+        今天开始 Research 一个新的前端技术，PWA（ 全称：Progressive Web App ）也就是说这是个渐进式的网页应用程序。这个技术的呢是 Google 公司于2015 年提出的，2016 年 6 月才推广的项目。针对这一项技术目前在国外似乎已经很流行了，目前应用这项技术最火热的应用是在印度（ 大家或许会疑惑为什么是在印度最流行呢吧，下文中会告诉大家哦 ），既然 PWA 这项技术在国外已经非常的流行了，那么在国内或许会不远了（ Angular 5 中新增的功能中，重点在于能够更轻松的构建渐进式网络应用程序，也就是 PWA 了。作为Google 和 mozilla 的产物，肯定会越来越重视啦 ）我引用一下关于PWA技术的一篇最早的文中的一句话吧： “ escaping tabs without losing our soul “（ 翻译一下哈：逃避选项卡而不丢失我们的灵魂 ）。
 
         官网上给出 PWA 的宣传是 ： Reliable （ 可靠的 ）、Fast（ 快速的 ）、Engaging（ 可参与的 ）（ 官网：https://developers.google.com/web/progressive-web-apps/     ps：需要翻墙哦  ）。简单的说一下这三个特性：
 
