@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(x,y) {
+      return request('http://www.baidu.com'+x+y)
+    }
+    function *main() {
+      try {
+        var txt = yield foo(11,31)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    function run(gen) {
+      var args = [].slice.call(arguments, 1), it;
+      it = gen.applay(this, args);
+      return Promise.resolve()
+        .then(function handleNext(value) {
+          var next = it.next(value)
+          return (function handleReslut(next) {
+            if (next.done) {
+              return next.value
+            } else {
+              return Promise.resolve(next.value)
+              .then(handleNext,
+              function handleErr(err) {
+                return Promise.resolve(it.throw(err)).then( handleNext );
+              })
+              
+            }
+          })(next)
+        })
+    }
+    run(main).then(function(value) {
+      console.log(value)
+    })
+
+    // var it = main()
+    // var p = it.next().value()
+    // p.then(function(txt) {
+    //   it.next(txt)
+    // },
+    // function(err) {
+    //   it.throw(err)
+    // })
+  </script>
+</body>
+</html>

@@ -13,7 +13,7 @@ var twoSum = function(nums, target) {
   }
 };
 var nums = [2,7,11,15]
-twoSum(nums, 11)
+console.log(twoSum(nums, 11))
 
 function twoSum2(nums, target) {
   for ( let i = 0; i < nums.length; i++) {

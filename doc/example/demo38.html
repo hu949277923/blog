@@ -8,5 +8,34 @@
 </head>
 <body>
   <span>asdsad<div>aaaa</div></span>
+  <script>
+  function parseProtocol(url) { 
+  var parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
+  var c = url.match(/^(\w+)\:\/\/([^\/]+)\/(.*)$/)
+  console.log(c)
+  if (!parsedURL) {
+    return false;
+  }
+  console.log(parsedURL); // ["https://developer.mozilla.org/en-US/Web/JavaScript", "https", "developer.mozilla.org", "en-US/Web/JavaScript"]
+
+  var [, protocol, fullhost, fullpath] = parsedURL;
+  return protocol;
+}
+
+console.log(parseProtocol('https://developer.mozilla.org/en-US/Web/JavaScript')); 
+12 / 2 / 2
+var arr = []
+function test(num) {
+  if (num % 2 === 0) {
+    arr.push(2)
+    num = test(num / 2)
+  } else {
+    arr.push(num)
+  }
+  return num
+}
+test(15)
+console.log(arr)
+  </script>
 </body>
 </html>
