@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{ message }}</p>
+	<h1>{{form.title}}</h1>
+	<button @click="changeMessage">切换</button>
+	<br/>
+	<cpn @click.native="clickCpn"></cpn>
+</div>
+<template id="cpn">
+	<div>
+		<button @click="clickCpn1">组件点击事件1</button>
+		<button @click="clickCpn2">组件点击事件2</button>
+	</div>
+</template>
+<script>
+let cpn = {
+	template: '#cpn',
+	methods:{
+		clickCpn1(){
+			console.log("child1 click event");
+			//this.$emit('click');
+		},
+		clickCpn2(){
+			console.log("child2 click event");
+			//this.$emit('click');
+		}
+	}
+}
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!',
+	 form:{
+	 	title: "标题党"
+	 }
+  },
+  components:{
+  	cpn,
+  },
+  watch: {
+  	'form.title'(newVal, oldVal){
+		console.log(newVal + ' -- ' + oldVal);
+	}
+  },
+  methods: {
+  	changeMessage(){
+		this.form.title = 'helloworld'
+	},
+	clickCpn(){
+		console.log("parent click event");
+	}
+  }
+})
+</script>
+</body>
+</html>
