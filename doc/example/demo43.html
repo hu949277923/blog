@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<script>
+	// 已知如下对象，请基于es6的proxy方法设计一个属性拦截读取操作的例子，要求实现去访问目标对象example中不存在的属性时，抛出错误：Property “$(property)” does not exist （2018 今日头条）
+
+// 案例代码
+const man = {
+    name:'jscoder',
+    age:22
+}
+const handler = {
+	get: function(target, propkey) {
+		if (propkey in target) return target[propkey]
+		return new Error(`Property "$(${propkey})" does not exist`)
+	}
+}
+//补全代码
+const proxy = new Proxy(man, handler)
+console.log(proxy.name)   // "jscoder"
+console.log(proxy.age )    // 22
+console.log(proxy.isPrototypeOf)   // Property "$(property)" does not exist
+</script>
+</body>
+</html>

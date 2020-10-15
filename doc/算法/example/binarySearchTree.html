@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="module">
+    import { BinarySearchTree } from '../binarySearchTree.js'
+    const binarySearch = new BinarySearchTree()
+    binarySearch.insert(1)
+    binarySearch.insert(2)
+    binarySearch.insert(2)
+    binarySearch.insert(1)
+    binarySearch.insert(1)
+    binarySearch.insert(2)
+    binarySearch.insert(-1)
+    binarySearch.insert(-2)
+    binarySearch.insert(-1.5)
+    console.log( binarySearch)
+    console.log('min', binarySearch.min())
+    console.log('max', binarySearch.max())
+    binarySearch.inOrderTraverse(function(val) {
+      console.log('中序',val)
+    })
+    binarySearch.preOrderTraverse(function(val) {
+      console.log('先序',val)
+    })
+    binarySearch.postOrderTraverse(function(val) {
+      console.log('后序',val)
+    })
+
+    // 只删除一个
+    console.log(binarySearch.remove(2))
+    //查询 -1.5
+    console.log(binarySearch.search(-1.5))
+  </script>
+</body>
+</html>
