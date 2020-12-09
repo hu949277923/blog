@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <script>
+    function render() {
+  with(this) {
+    return _c(hello)
+  }
+}
+var sharedPropertyDefinition = {
+  enumerable: true,
+  configurable: true,
+  get: () => {},
+  set: () => {}
+};
+function proxy (target, sourceKey, key) {
+  sharedPropertyDefinition.get = function proxyGetter () {
+    return [target][sourceKey]
+  };
+  sharedPropertyDefinition.set = function proxySetter (val) {
+    this[sourceKey][key] = val;
+  };
+  // Object.defineProperty(target, key, sharedPropertyDefinition);
+}
+const proxy2 = new Proxy({
+  _c(val) {
+    return String(val)
+  },
+  hello: '1111'
+}, proxy);
+
+console.log(render.call(proxy2));
+  </script>
+</body>
+</html>
