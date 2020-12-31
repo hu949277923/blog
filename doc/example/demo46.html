@@ -1,0 +1,44 @@
+<!--
+ * @Author       : bill
+ * @Date         : 2020-12-16 15:38:31
+ * @LastEditTime : 2020-12-16 15:52:01
+ * @LastEditors  : bill
+ * @Description  : 
+ * @FilePath     : /blog/doc/example/demo46.html
+ * @----------------------------------------------------------------------------------
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>1无trycatch的情况耗时</title>
+<script>
+	// console.time('无trycatch')
+	// for (let i = 0; i < 100000000; i++) {
+	// 	var a = 1
+	// }
+	// console.timeEnd('无trycatch')
+	// console.time('有trycatch')
+	// try {
+	// 	for (let i = 0; i < 100000000; i++) {
+	// 		var a = 1
+	// 	}
+	// 	throw new Error()
+	// } catch(err) {
+	// 	console.log('err', err)
+	// }
+	// console.timeEnd('有trycatch')
+	// console.time('有trycatch内')
+	// try {
+	// 	throw new Error()
+	// } catch(err) {
+	// 	for (let i = 0; i < 100000000; i++) {
+	// 		var a = 1
+	// 	}
+	// 	console.log('err', err)
+	// }
+	// console.timeEnd('有trycatch内')
+</script>
+</head>
+<body>
+</body>
+</html>

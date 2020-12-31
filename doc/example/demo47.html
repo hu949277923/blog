@@ -1,0 +1,33 @@
+<!--
+ * @Author       : bill
+ * @Date         : 2020-12-16 15:38:37
+ * @LastEditTime : 2020-12-16 15:39:12
+ * @LastEditors  : bill
+ * @Description  : 
+ * @FilePath     : /blog/doc/example/demo47.html
+ * @----------------------------------------------------------------------------------
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>2在try中内联代码的耗时情况</title>
+<script>
+!function(){
+//在 try 中内联代码的耗时情况
+vart=newDate();
+try{
+//耗时代码开始
+for(vari=0;i<100000000;i++){
+varp=i%2;
+}
+//耗时代码结束
+thrownewError();
+}catch(e){
+}
+document.write(newDate()–t);
+}();
+</script>
+</head>
+<body>
+</body>
+</html>

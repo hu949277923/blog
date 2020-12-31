@@ -1,0 +1,51 @@
+<!--
+ * @Author       : bill
+ * @Date         : 2020-12-28 16:42:38
+ * @LastEditTime : 2020-12-31 16:10:39
+ * @LastEditors  : bill
+ * @Description  : 
+ * @FilePath     : /blog/doc/example/demo48.html
+ * @----------------------------------------------------------------------------------
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(111)
+      }, 3000)
+    })
+    async function getdata() {
+      try {
+        const res = await promise
+      } finally {
+        console.log(3333)
+      }
+     
+    }
+    getdata()
+    // try {
+    //   getdata()
+    // } catch (error) {
+      
+    // } finally {
+    //   console.log(222)
+    // }
+    promise.then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    }).finally(() => {
+      console.log(222222)
+    })
+    // try ... catch ... finally 是同步执行的，如果 try 中存在异步方法或者函数；则会优先执行finally后再回过头来执行异步代码
+    // promise中的finally 是可以实现异步的
+  </script>
+</body>
+</html>
