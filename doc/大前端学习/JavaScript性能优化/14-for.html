@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+  <p class="btn">add</p>
+<script>
+  var abtn = document.getElementsByClassName('btn')
+  console.time('before')
+  for (var i = 0; i < abtn.length; i++) {
+    console.log(i)
+  }
+  console.timeEnd('before') // before: 0.85693359375 ms
+
+  console.time('after')
+  for (var i = 0, len = abtn.length; i < len; i++) {
+    console.log(i)
+  }
+  console.timeEnd('after') // after: 0.7119140625 ms
+
+</script>
+</body>
+</html>

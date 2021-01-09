@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <buttton id="btn">add</buttton>
+  <script>
+    // 外部引用
+    // 用到了作用域外的数据
+    // el被引用2次
+    // 内存层面 dom节点 引用计数
+    function  foo() {
+      var el = document.getElementById('btn')
+      el.onclick = function () {
+        console.log(el.id)
+      }
+    }
+    foo()
+
+    function  foo() {
+      var el = document.getElementById('btn')
+      el.onclick = function () {
+        console.log(el.id)
+      }
+      el = null
+    }
+  </script>
+</body>
+</html>

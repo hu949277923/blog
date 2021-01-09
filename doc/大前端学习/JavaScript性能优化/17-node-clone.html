@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="box1"> old</p>
+  <script>
+    for (var i = 0; i < 13; i++) {
+      var op = document.createElement('p')
+      op.innerHTML = i
+      document.body.appendChild(op)
+    }
+    // 9681.91 ops/s ± 25.96% Fastest
+    // 通过克隆节点优化
+    var oldp = document.getElementById('box1')
+    for (var i = 0; i < 13; i++) {
+      var bp = oldp.cloneNode(false)
+      bp.innerHTML = i
+      document.body.appendChild(op)
+    }
+    // 7218.54 ops/s ± 40.14% Fastest
+
+  </script>
+</body>
+</html>

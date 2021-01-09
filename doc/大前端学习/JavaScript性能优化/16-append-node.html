@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    for (var i = 0; i < 10; i++) {
+      var op = document.createElement('p')
+      op.innerHTML = i
+      document.body.appendChild(op)
+    }
+    // 8274.77 ops/s ± 25.3%   39.82 % slower
+ 
+    const fragele = document.createDocumentFragment()
+    for (var i = 0; i < 10; i++) {
+      var op = document.createElement('p')
+      op.innerHTML = i
+      fragele.appendChild(op)
+    }
+    document.body.appendChild(fragele)
+    // 13748.97 ops/s ± 18.77% Fastest
+  </script>
+</body>
+</html>

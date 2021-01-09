@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">add</button>
+  <script>
+    // 通过在堆快照中搜索deta来查找未分离的DOM
+    const obtn = document.getElementById('btn')
+    var temp
+    function  fn () {
+      var ul = document.createElement('ul')
+      for (let i = 0; i < 10; i++) {
+        var li = document.createElement('li')
+        ul.appendChild(li)
+      }
+      temp = ul
+      // 通过设置null 来清除dom占用的内存空间
+      // temp = null
+    }
+    obtn.addEventListener('click', fn)
+  </script>
+</body>
+</html>
