@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" style="width: 100px; height: 100px;"></div>
+  <script>
+    var obox = document.getElementById('box')
+    var test = (ele) => {
+      let w = ele.offsetWidth
+      let h = ele.offsetHeight
+      return w * h
+    }
+    // 最小化语句数
+    var test = (ele) => {
+      return ele.offsetWidth * ele.offsetHeight
+    }
+
+    test(obox)
+
+    var test = () => {
+      var name = 'bill'
+      var age = 18
+      return name + age
+    }
+    // 减少声明
+    var test = () => {
+      var name = 'bill',
+          age = 18
+      return name + age
+    }
+  </script>
+</body>
+</html>

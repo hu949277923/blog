@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="ul">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+  </ul>
+  <script>
+    var list =document.querySelectorAll('li')
+    function show (ev) {
+      console.log(ev.target.innerHTML)
+    }
+    for (let item of list) {
+      item.onclick = show
+    }
+    // 事件委托
+    var ul = document.getElementById('ul')
+    function  show(ev) {
+      var obj = ev.target
+      if (obj.nodeName.toLowerCase() === 'li') {
+        console.log(obj.innerHTML)
+      }
+    }
+    ul.addEventListener('click', show, true)
+  </script>
+</body>
+</html>

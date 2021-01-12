@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="skip" class="skip"></div>
+  <script>
+    var obox = document.getElementById('skip')
+    function hasEle(ele, cls) {
+      return ele.className === cls
+    }
+    // 减少数据读取次数
+    function hasEle(ele, cls) {
+      var cln = ele.className
+      return cln === cls
+    }
+    hasEle(obox, 'skip')
+  </script>
+</body>
+</html>

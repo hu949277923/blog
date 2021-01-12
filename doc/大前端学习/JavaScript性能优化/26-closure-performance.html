@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" style="width: 100px; height: 100px;"></div>
+  <button id="btn">点击</button>
+  <script>
+    var obtn = document.getElementById('btn')
+    function foo() {
+      console.log(this)
+    }
+    function addEvenet(obj, type, fn) {
+      if (obj.addEvenetListener) {
+        obj.addEvenetListener(type, fn, false)
+      } else if (obj.attachEvent) {
+        obj.attachEvent('on' + type, fn)
+      } else {
+        obj['on' + type] = fn
+      }
+    }
+    // 惰性函数， 在下次调用时，不会在执行if语句，但执行顺序经测试并没有之前好
+    function addEvenet(obj, type, fn) {
+      if (obj.addEvenetListener) {
+        addEvenet = obj.addEvenetListener(type, fn, false)
+      } else if (obj.attachEvent) {
+        addEvenet = obj.attachEvent('on' + type, fn)
+      } else {
+        addEvenet = obj['on' + type] = fn
+      }
+      return addEvenet
+    }
+    addEvenet(obtn, 'click', foo)
+  </script>
+</body>
+</html>
