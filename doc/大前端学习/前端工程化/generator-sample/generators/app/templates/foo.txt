@@ -1,0 +1,7 @@
+hello world
+
+<%= title %>
+
+<% if (success) { %>
+bill bill
+<% } %>
