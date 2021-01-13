@@ -1,0 +1,9 @@
+{
+  "name": "plop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "plop": "^2.7.4"
+  }
+}
