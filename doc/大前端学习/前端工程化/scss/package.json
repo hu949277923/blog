@@ -1,0 +1,9 @@
+{
+  "name": "scss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "scss": "^0.2.4"
+  }
+}
