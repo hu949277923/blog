@@ -1,0 +1,9 @@
+{
+  "name": "12_wp_wirte_syncHook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "tapable": "^2.2.0"
+  }
+}
