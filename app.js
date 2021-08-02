@@ -11,7 +11,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require("koa-session2")
 const Store = require("./utils/store")
-
+//git
 const index = require('./routes/index')
 const about = require('./routes/about')
 const newslistpic = require('./routes/newslistpic')
